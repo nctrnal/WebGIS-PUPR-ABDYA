@@ -17,7 +17,7 @@
                 <?= csrf_field(); ?>
                 <div class="mb-3">
                     <label for="namaDaerah" class="form-label">Nama Daerah</label>
-                    <input type="text" class="form-control" id="namaDaerah" name="namaDaerah" value="<?= $berkas[0]->namaDaerah; ?>" autofocus>
+                    <input type="text" class="form-control" id="namaDaerah" name="namaDaerah" value="<?= $berkas->namaDaerah; ?>" autofocus>
                 </div>
                 <div class="mb-3">
                     <label for="pdf" class="form-label">Data</label>

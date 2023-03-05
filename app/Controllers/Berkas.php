@@ -100,7 +100,7 @@ class Berkas extends BaseController
             'namaDaerah' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => '{field} Harus diisi'
+                    'required' => 'Nama daerah harus diisi'
                 ]
             ],
             'pdf' => [
