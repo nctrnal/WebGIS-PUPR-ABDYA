@@ -54,9 +54,15 @@ $routes->get('Berkas', 'Berkas::index');
 $routes->get('Berkas/save', 'Berkas::index');
 $routes->get('Berkas/create', 'Berkas::create');
 $routes->get('Berkas/download/(:num)', 'Berkas::download/$1');
-$routes->delete('Berkas/delete/(:num)', 'Berkas::delete/$1');
+$routes->get('Berkas/update/(:num)', 'Berkas::update/$1');
 $routes->post('Berkas/save', 'Berkas::save');
+$routes->post('Berkas/updateData/(:num)', 'Berkas::updateData/$1');
+$routes->delete('Berkas/delete/(:num)', 'Berkas::delete/$1');
 
+//Login
+$routes->get('Login', 'Login::index');
+$routes->post('Login/process', 'Login::process');
+$routes->get('Login/logout', 'Login::logout');
 
 
 /*

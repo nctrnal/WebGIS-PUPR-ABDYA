@@ -11,7 +11,7 @@
                     <?php echo session()->getFlashdata('success'); ?>
                 </div>
             <?php endif; ?>
-            <a href="<?= base_url(); ?> /Berkas/create" class="btn btn-primary my-3">Upload</a>
+            <a href="<?= base_url(); ?>/Berkas/create" class="btn btn-primary my-3">Upload</a>
             <table class="table table-bordered table-striped">
                 <thead class="bg-secondary">
                     <tr>
@@ -29,7 +29,7 @@
                             <th><?= $no++; ?></th>
                             <td> <?= $value->namaDaerah; ?> </td>
                             <td>
-                                <a class="btn btn-success mx-1px">Detail</a>
+                                <a href="<?= base_url(); ?>Berkas/update/<?= $value->id; ?>" class="btn btn-success mx-1px">Update</a>
                                 <a href="<?= base_url(); ?>Berkas/delete/<?= $value->id; ?>" class="btn btn-danger mx-1px">Delete</a>
                             </td>
                         </tr>

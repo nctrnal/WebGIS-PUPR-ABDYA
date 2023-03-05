@@ -14,7 +14,7 @@
             </div>
             <div class="navbar-nav">
                 <div class="container">
-                    <a class="nav-item nav-link border border-3 rounded-pill" style="margin-left:18cm; border:10px; border-color:black;" href="/Login">Login</a>
+                    <a class="nav-item nav-link border border-3 rounded-pill" style="margin-left:18cm; border:10px; border-color:black;" href="<?= base_url(); ?>Login/logout">Logout</a>
                 </div>
             </div>
         </div>

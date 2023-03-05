@@ -17,7 +17,7 @@
 
 <body>
 
-    <?= $this->include('layouts/navbar'); ?>
+    <?= $this->include('layouts/navbarAdmin'); ?>
 
     <?= $this->renderSection('contentAdmin'); ?>
 
