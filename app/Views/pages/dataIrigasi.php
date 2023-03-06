@@ -11,19 +11,19 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th id="#aksi">Aksi</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $no = 1;
-                    foreach ($berkas[0] as $value) {
+                    foreach ($berkas as $value) {
                     ?>
                         <tr>
                             <th><?= $no++; ?></th>
                             <td><?= $value->namaDaerah; ?></td>
                             <td>
-                                <a class="btn btn-success">Detail</a>
+                                <a href="<?= base_url(); ?>/Pages/detail" class="btn btn-success">Detail</a>
                                 <a href="<?= base_url(); ?>/Berkas/download/<?= $value->id; ?>" class="btn btn-primary">Download</a>
                             </td>
                         </tr>

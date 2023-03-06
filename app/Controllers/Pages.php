@@ -2,8 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
-
+use App\Models\BerkasModel;
 
 class Pages extends BaseController
 {
@@ -61,5 +62,17 @@ class Pages extends BaseController
             'title' => 'Bangunan Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya'
         ];
         echo view('pages/bangunanIrigasi', $data);
+    }
+
+    public function dataIrigasi()
+    {
+        $berkas = new BerkasModel();
+        $data['berkas'] = [
+            'title' => 'Detail | Dinas PUPR Kabupaten Aceh Barat Daya',
+            $berkas->findAll(),
+        ];
+
+        echo view('pages/dataIrigasi', $data);
+        dd($data);
     }
 }
