@@ -16,16 +16,7 @@ class Users extends Migration
             'password'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '100',
-            ],
-            'created_at' => [
-                'type'           => 'DATETIME',
-                'null'            => true,
-            ],
-            'updated_at' => [
-                'type'           => 'DATETIME',
-                'null'            => true,
             ]
-
         ]);
         $this->forge->addPrimaryKey('username', true);
         $this->forge->createTable('users');

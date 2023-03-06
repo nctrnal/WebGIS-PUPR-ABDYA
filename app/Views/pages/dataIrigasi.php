@@ -17,7 +17,7 @@
                 <tbody>
                     <?php
                     $no = 1;
-                    foreach ($berkas as $value) {
+                    foreach ($berkas[0] as $value) {
                     ?>
                         <tr>
                             <th><?= $no++; ?></th>
