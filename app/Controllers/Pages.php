@@ -8,6 +8,13 @@ use App\Models\BerkasModel;
 
 class Pages extends BaseController
 {
+    protected $BerkasModel;
+
+    public function __construct()
+    {
+        $this->BerkasModel = new BerkasModel();
+    }
+
     public function index()
     {
         $data = [
@@ -66,13 +73,13 @@ class Pages extends BaseController
 
     public function dataIrigasi()
     {
-        $berkas = new BerkasModel();
-        $data['berkas'] = [
+        $berkas = $this->BerkasModel->findAll();
+        $data = [
             'title' => 'Detail | Dinas PUPR Kabupaten Aceh Barat Daya',
-            $berkas->findAll(),
+            'berkas' => $berkas
         ];
 
         echo view('pages/dataIrigasi', $data);
-        dd($data);
+        // dd($data);
     }
 }

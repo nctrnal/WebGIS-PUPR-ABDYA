@@ -13,7 +13,7 @@
                     <?php echo session()->getFlashdata('error'); ?>
                 </div>
             <?php endif; ?>
-            <form method="post" action="<?= base_url(); ?>/Berkas/updateData/<?= $berkas[0]->id; ?>" enctype="multipart/form-data">
+            <form method="post" action="<?= base_url(); ?>/Berkas/updateData/<?= $berkas->id; ?>" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="mb-3">
                     <label for="namaDaerah" class="form-label">Nama Daerah</label>
@@ -23,7 +23,7 @@
                     <label for="pdf" class="form-label">Data</label>
                     <input type="file" class="form-control" id="pdf" name="pdf">
                 </div>
-                <button type="submit" class="btn btn-primary" value="update">Update</button>
+                <button type="submit" class="btn btn-primary" value="submit">Update</button>
             </form>
         </div>
     </div>

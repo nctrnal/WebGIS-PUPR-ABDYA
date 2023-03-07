@@ -7,12 +7,19 @@ use App\Models\BerkasModel;
 
 class Berkas extends BaseController
 {
+    protected $BerkasModel;
+
+    public function __construct()
+    {
+        $this->BerkasModel = new BerkasModel();
+    }
+
     public function index()
     {
-        $berkas = new BerkasModel();
-        $data['berkas'] = [
+        $berkas = $this->BerkasModel->findAll();
+        $data = [
             'title' => 'Data Irigasi Admin',
-            $berkas->findAll()
+            'berkas' => $berkas
         ];
         echo view('admin/dataIrigasiAdmin', $data);
     }
@@ -46,8 +53,7 @@ class Berkas extends BaseController
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
-
-        $berkas = new BerkasModel();
+        $berkas = $this->BerkasModel;
         $dataBerkas = $this->request->getFile('pdf');
         $fileName = $dataBerkas->getRandomName();
         $berkas->insert([
@@ -59,19 +65,19 @@ class Berkas extends BaseController
         return redirect()->to(base_url('Berkas/index'));
     }
 
-    public function dataIrigasi()
-    {
-        $berkas = new BerkasModel();
-        $data['berkas'] = [
-            'title' => 'Data Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya',
-            $berkas->findAll()
-        ];
-        echo view('pages/dataIrigasi', $data);
-    }
+    // public function dataIrigasi()
+    // {
+    //     $berkas = new BerkasModel();
+    //     $data['berkas'] = [
+    //         'title' => 'Data Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya',
+    //         $berkas->findAll()
+    //     ];
+    //     echo view('pages/dataIrigasi', $data);
+    // }
 
     public function delete($id = null)
     {
-        $berkas = new BerkasModel();
+        $berkas = $this->BerkasModel;
         $berkas->delete($id);
         session()->setFlashdata('success', 'Berkas Berhasil dihapus');
         return redirect()->to('/Berkas');
@@ -79,15 +85,20 @@ class Berkas extends BaseController
 
     public function download($id)
     {
-        $berkas = new BerkasModel();
+        $berkas = $this->BerkasModel;
         $data = $berkas->find($id);
         return $this->response->download('uploads/berkas/' . $data->pdf, null);
     }
 
     public function update($id)
     {
-        $berkas = new BerkasModel();
-        $data['berkas'] = $berkas->findAll($id);
+        $berkas = $this->BerkasModel;
+        $berkas->findAll($id);
+
+        $data = [
+            'berkas' => $berkas
+        ];
+
         if (empty($berkas)) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Data daerah irigasi tidak ditemukan !!');
         }
@@ -106,20 +117,19 @@ class Berkas extends BaseController
             'pdf' => [
                 'rules' => 'uploaded[pdf]',
                 'errors' => [
-                    'required' => 'File yang di upload harus berupa PDF'
+                    'uploaded' => 'Harus ada file yang di upload'
                 ]
             ]
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back();
         }
-
-        $berkas = new BerkasModel();
+        $berkas = $this->BerkasModel;
         $dataBerkas = $this->request->getFile('pdf');
         $fileName = $dataBerkas->getRandomName();
         $berkas->update($id, [
-            'pdf' => $fileName,
-            'namaDaerah' => $this->request->getVar('namaDaerah')
+            'namaDaerah' => $this->request->getVar('namaDaerah'),
+            'pdf' => $fileName
         ]);
         $dataBerkas->move('uploads/berkas/', $fileName);
         session()->setFlashdata('message', 'Update Data Irigasi Berhasil');

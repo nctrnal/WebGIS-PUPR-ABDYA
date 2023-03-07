@@ -1,6 +1,6 @@
-<?= $this->extend('layouts/templateAdmin'); ?>
+<?= $this->extend('layouts/template'); ?>
 
-<?= $this->section('contentAdmin'); ?>
+<?= $this->section('content'); ?>
 
 <div class="container">
     <div class="row">
@@ -17,7 +17,7 @@
                 <tbody>
                     <?php
                     $no = 1;
-                    foreach ($berkas[0] as $value) {
+                    foreach ($berkas as $value) {
                     ?>
                         <tr>
                             <th><?= $no++; ?></th>
@@ -36,4 +36,4 @@
     </div>
 </div>
 
-<?= $this->endSection('contentAdmin'); ?>
+<?= $this->endSection('content'); ?>
