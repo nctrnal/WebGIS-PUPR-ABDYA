@@ -38,8 +38,8 @@
     </div>
 </nav>
 
-<div class="container">
-    <div class="col">
+<div class="container align-item-center">
+    <div class="col-8">
         <div class="row-8">
             <?php if (!empty(session()->getFlashdata('error'))) : ?>
                 <div class="mt-3 alert alert-warning alert-dismissible fade show" role="alert">
@@ -48,13 +48,13 @@
             <?php endif; ?>
             <form method="post" action="<?= base_url(); ?>/Login/process">
                 <?= csrf_field(); ?>
-                <div class="my-3">
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" autofocus required>
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" name="username" id="username" autofocus required>
                 </div>
-                <div class="mb-3">
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" required>
                 </div>
                 <button type="submit" class="btn btn-success">Login</button>
             </form>

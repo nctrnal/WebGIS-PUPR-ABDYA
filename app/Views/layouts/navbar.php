@@ -9,7 +9,7 @@
                 <a class="nav-item nav-link border border-3 rounded" style="margin-right: 5px;" href="/Pages/jaringanIrigasi">Jaringan Irigasi</a>
                 <a class="nav-item nav-link border border-3 rounded" style="margin-right: 5px;" href="/Pages/bangunanIrigasi">Bangunan Irigasi</a>
                 <a class="nav-item nav-link border border-3 rounded" style="margin-right: 5px;" href="/Pages/daerahIrigasi">Daerah Irigasi</a>
-                <a class="nav-item nav-link border border-3 rounded" style="margin-right: 5px;" href="/Pages/dokumentasi">Dokumentasi</a>
+                <a class="nav-item nav-link border border-3 rounded" style="margin-right: 5px;" href="/Pages/pelaporan">Pelaporan</a>
                 <a class="nav-item nav-link border border-3 rounded" style="margin-right: 20px;" href="/Pages/dataIrigasi">Data</a>
             </div>
             <div class="navbar-nav">

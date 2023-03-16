@@ -14,3 +14,7 @@
 #aksi {
     flex-wrap: wrap;
 }
+
+#map {
+    height: 100%;
+}

@@ -92,16 +92,14 @@ class Berkas extends BaseController
 
     public function update($id)
     {
-        $berkas = $this->BerkasModel;
-        $berkas->findAll($id);
-
-        $data = [
-            'berkas' => $berkas
-        ];
+        $berkas = $this->BerkasModel->find($id);
 
         if (empty($berkas)) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Data daerah irigasi tidak ditemukan !!');
         }
+        $data = [
+            'berkas' => $berkas
+        ];
         return view('admin/form_update', $data);
     }
 
@@ -132,7 +130,17 @@ class Berkas extends BaseController
             'pdf' => $fileName
         ]);
         $dataBerkas->move('uploads/berkas/', $fileName);
-        session()->setFlashdata('message', 'Update Data Irigasi Berhasil');
+        session()->setFlashdata('success', 'Update Data Irigasi Berhasil');
         return redirect()->to('/Berkas');
+
+
+        // cara lain
+
+        // $this->BerkasModel->update($id, [
+        //     'namaDaerah' => $this->request->getPost('namaDaerah'),
+        //     'pdf' => $this->request->getVar('pdf')
+        // ]);
+
+        return redirect('berkas')->with('success', 'Data Berhasil di Update');
     }
 }

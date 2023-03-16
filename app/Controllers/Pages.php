@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use App\Models\BerkasModel;
 
@@ -55,12 +54,12 @@ class Pages extends BaseController
         echo view('pages/dataAdmin', $data);
     }
 
-    public function dokumentasi()
+    public function pelaporan()
     {
         $data = [
-            'title' => 'Dokumentasi | Dinas PUPR Kabupaten Aceh Barat Daya'
+            'title' => 'Pelaporan | Dinas PUPR Kabupaten Aceh Barat Daya'
         ];
-        echo view('pages/dokumentasi', $data);
+        echo view('pages/pelaporan', $data);
     }
 
     public function bangunanIrigasi()
