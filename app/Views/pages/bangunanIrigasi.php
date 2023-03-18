@@ -1,11 +1,16 @@
 <?= $this->extend('layouts/template'); ?>
 
 <?= $this->section('content'); ?>
-
-<div id="map" style="height: 400px;"></div>
+<div class="container-fluid">
+    <div class="card mt-3">
+        <div class="card-body">
+            <div id="map" style="height: 600px;"></div>
+        </div>
+    </div>
+</div>
 
 <script>
-    const map = L.map('map').setView([5.554534278964322, 95.3172003330198], 15);
+    const map = L.map('map').setView([3.837549, 96.871154], 11);
 
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {})
         .addTo(map);

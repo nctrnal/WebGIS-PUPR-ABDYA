@@ -5,10 +5,10 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="card text-center" style="width: 18rem;">
+            <div class="card text-center" style="width: auto;">
 
                 <div class="text-center mt-3">
-                    <img src="/assets/img/irigasi/Alu Bate Leukat_001.png" class="rounded" alt="...">
+                    <img src="/img/irigasi/<?= $berkas->id; ?>.png" class="rounded" alt="...">
                 </div>
 
             </div>

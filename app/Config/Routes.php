@@ -47,7 +47,7 @@ $routes->get('/Pages/daerahIrigasi', 'Pages::daerahIrigasi');
 $routes->get('/Pages/bangunanIrigasi', 'Pages::bangunanIrigasi');
 $routes->get('/Pages/pelaporan', 'Pages::pelaporan');
 $routes->get('/Pages/dataIrigasi', 'Pages::dataIrigasi');
-$routes->get('/Pages/detail', 'Pages::detail');
+$routes->get('/Pages/detail/(:num)', 'Pages::detail/$1');
 $routes->get('/Pages/login', 'Pages::login');
 
 //Admin =DataController = Berkas

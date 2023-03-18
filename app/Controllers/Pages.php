@@ -74,11 +74,22 @@ class Pages extends BaseController
     {
         $berkas = $this->BerkasModel->findAll();
         $data = [
-            'title' => 'Detail | Dinas PUPR Kabupaten Aceh Barat Daya',
+            'title' => 'Data Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya',
             'berkas' => $berkas
         ];
 
         echo view('pages/dataIrigasi', $data);
         // dd($data);
+    }
+
+    public function detail($id)
+    {
+        $berkas = $this->BerkasModel;
+        $data = [
+            'title' => 'Data Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya',
+            'berkas' => $berkas->find($id)
+        ];
+
+        echo view('pages/detail', $data);
     }
 }
