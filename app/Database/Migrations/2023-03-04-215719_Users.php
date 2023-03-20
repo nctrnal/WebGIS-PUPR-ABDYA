@@ -11,14 +11,14 @@ class Users extends Migration
         $this->forge->addField([
             'username'          => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '100',
+                'constraint'     => '255',
             ],
             'password'       => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '100',
+                'constraint'     => '255',
             ]
         ]);
-        $this->forge->addPrimaryKey('username', true);
+        $this->forge->addKey('username', true);
         $this->forge->createTable('users');
     }
 

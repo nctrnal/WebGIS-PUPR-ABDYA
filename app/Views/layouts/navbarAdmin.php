@@ -20,8 +20,8 @@
                 <li class="nav-item">
                     <a class="nav-link <?php if ($title == 'Daerah Irigasi') : ?> active <?php endif; ?>" href="/Admin/daerahIrigasiAdmin">Daerah Irigasi</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php if ($title == 'Pelaporan') : ?> active <?php endif; ?>" href="/Admin/pelaporanAdmin">Pelaporan</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link <?php if ($title == 'Pelaporan') : ?> active <?php endif; ?>" href="/Admin/lihatLaporan">Pelaporan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php if ($title == 'Data Irigasi') : ?> active <?php endif; ?>" href="/Admin/dataIrigasiAdmin">Data</a>

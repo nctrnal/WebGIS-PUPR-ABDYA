@@ -98,6 +98,7 @@ class Berkas extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Data daerah irigasi tidak ditemukan !!');
         }
         $data = [
+            'title' => 'Update',
             'berkas' => $berkas
         ];
         return view('admin/form_update', $data);

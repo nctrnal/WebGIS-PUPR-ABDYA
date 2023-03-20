@@ -61,7 +61,8 @@ $routes->post('Berkas/updateData/(:num)', 'Berkas::updateData/$1');
 $routes->delete('Berkas/delete/(:num)', 'Berkas::delete/$1');
 
 //admin
-$routes->get('/Admin', 'Admin::index');
+$routes->get('Admin', 'Admin::index');
+$routes->post('Admin/saveLaporan', 'Admin::saveLaporan');
 
 //Login
 $routes->get('Login', 'Login::index');

@@ -4,14 +4,17 @@ namespace App\Controllers;
 
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use App\Models\BerkasModel;
+use App\Models\LaporanModel;
 
 class Pages extends BaseController
 {
     protected $BerkasModel;
+    protected $LaporanModel;
 
     public function __construct()
     {
         $this->BerkasModel = new BerkasModel();
+        $this->LaporanModel = new LaporanModel();
     }
 
     public function index()
@@ -54,13 +57,6 @@ class Pages extends BaseController
         echo view('pages/dataAdmin', $data);
     }
 
-    public function pelaporan()
-    {
-        $data = [
-            'title' => 'Pelaporan'
-        ];
-        echo view('pages/pelaporan', $data);
-    }
 
     public function bangunanIrigasi()
     {
@@ -91,5 +87,13 @@ class Pages extends BaseController
         ];
 
         echo view('pages/detail', $data);
+    }
+
+    public function pelaporan()
+    {
+        $data = [
+            'title' => 'Pelaporan'
+        ];
+        echo view('pages/pelaporan', $data);
     }
 }
