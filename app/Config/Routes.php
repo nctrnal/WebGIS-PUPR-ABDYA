@@ -42,13 +42,13 @@ $routes->setAutoRoute(true);
 
 //Pages
 $routes->get('/', 'Pages::index');
-$routes->get('/Pages/jaringanIrigasi', 'Pages::jaringanIrigasi');
-$routes->get('/Pages/daerahIrigasi', 'Pages::daerahIrigasi');
-$routes->get('/Pages/bangunanIrigasi', 'Pages::bangunanIrigasi');
-$routes->get('/Pages/pelaporan', 'Pages::pelaporan');
-$routes->get('/Pages/dataIrigasi', 'Pages::dataIrigasi');
-$routes->get('/Pages/detail/(:num)', 'Pages::detail/$1');
-$routes->get('/Pages/login', 'Pages::login');
+// $routes->get('/Pages/jaringanIrigasi', 'Pages::jaringanIrigasi');
+// $routes->get('/Pages/daerahIrigasi', 'Pages::daerahIrigasi');
+// $routes->get('/Pages/bangunanIrigasi', 'Pages::bangunanIrigasi');
+// $routes->get('/Pages/pelaporan', 'Pages::pelaporan');
+// $routes->get('/Pages/dataIrigasi', 'Pages::dataIrigasi');
+// $routes->get('/Pages/detail/(:num)', 'Pages::detail/$1');
+// $routes->get('/Pages/login', 'Pages::login');
 
 //Admin =DataController = Berkas
 $routes->get('Berkas', 'Berkas::index');
@@ -59,6 +59,9 @@ $routes->get('Berkas/update/(:num)', 'Berkas::update/$1');
 $routes->post('Berkas/save', 'Berkas::save');
 $routes->post('Berkas/updateData/(:num)', 'Berkas::updateData/$1');
 $routes->delete('Berkas/delete/(:num)', 'Berkas::delete/$1');
+
+//admin
+$routes->get('/Admin', 'Admin::index');
 
 //Login
 $routes->get('Login', 'Login::index');

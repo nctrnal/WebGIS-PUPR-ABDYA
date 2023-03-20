@@ -1,6 +1,6 @@
-<?= $this->extend('layouts/template'); ?>
+<?= $this->extend('layouts/templateAdmin'); ?>
 
-<?= $this->section('content'); ?>
+<?= $this->section('contentAdmin'); ?>
 
 <div class="container">
     <div class="row">
@@ -43,4 +43,4 @@
     </div>
 </div>
 
-<?= $this->endSection('content'); ?>
+<?= $this->endSection('contentAdmin'); ?>

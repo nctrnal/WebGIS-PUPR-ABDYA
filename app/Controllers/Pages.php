@@ -17,7 +17,7 @@ class Pages extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Beranda | Dinas PUPR Kabupaten Aceh Barat Daya'
+            'title' => 'Beranda'
         ];
         echo view('pages/home', $data);
     }
@@ -25,7 +25,7 @@ class Pages extends BaseController
     public function login()
     {
         $data = [
-            'title' => 'Login | Dinas PUPR Kabupaten Aceh Barat Daya'
+            'title' => 'Login'
         ];
         echo view('pages/login', $data);
     }
@@ -33,7 +33,7 @@ class Pages extends BaseController
     public function jaringanIrigasi()
     {
         $data = [
-            'title' => 'Jaringan Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya'
+            'title' => 'Jaringan Irigasi'
         ];
         echo view('pages/jaringanIrigasi', $data);
     }
@@ -41,7 +41,7 @@ class Pages extends BaseController
     public function daerahIrigasi()
     {
         $data = [
-            'title' => 'Daerah Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya'
+            'title' => 'Daerah Irigasi'
         ];
         echo view('pages/daerahIrigasi', $data);
     }
@@ -49,7 +49,7 @@ class Pages extends BaseController
     public function dataAdmin()
     {
         $data = [
-            'title' => 'Data Admin | Dinas PUPR Kabupaten Aceh Barat Daya'
+            'title' => 'Data Admin'
         ];
         echo view('pages/dataAdmin', $data);
     }
@@ -57,7 +57,7 @@ class Pages extends BaseController
     public function pelaporan()
     {
         $data = [
-            'title' => 'Pelaporan | Dinas PUPR Kabupaten Aceh Barat Daya'
+            'title' => 'Pelaporan'
         ];
         echo view('pages/pelaporan', $data);
     }
@@ -65,7 +65,7 @@ class Pages extends BaseController
     public function bangunanIrigasi()
     {
         $data = [
-            'title' => 'Bangunan Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya'
+            'title' => 'Bangunan Irigasi'
         ];
         echo view('pages/bangunanIrigasi', $data);
     }
@@ -74,7 +74,7 @@ class Pages extends BaseController
     {
         $berkas = $this->BerkasModel->findAll();
         $data = [
-            'title' => 'Data Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya',
+            'title' => 'Data Irigasi',
             'berkas' => $berkas
         ];
 
@@ -86,7 +86,7 @@ class Pages extends BaseController
     {
         $berkas = $this->BerkasModel;
         $data = [
-            'title' => 'Data Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya',
+            'title' => 'Data Irigasi',
             'berkas' => $berkas->find($id)
         ];
 

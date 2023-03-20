@@ -1,7 +1,16 @@
-.icon {
+/* navbar */
+#icon {
     width: 40px;
 }
 
+@media screen and (min-width: 992px) {
+    .nav-login {
+      position: absolute;
+      right: 15px;
+    }
+  }
+
+/* data irigasi */
 .table {
     margin-top: 2;
     text-align: center;
@@ -11,10 +20,19 @@
     
 }
 
+/* tombol table */
 #aksi {
     flex-wrap: wrap;
 }
 
+/* peta */
 #map {
     height: 100%;
+}
+
+
+/* form lapor */
+#deskripsi {
+    height: 150px;
+
 }

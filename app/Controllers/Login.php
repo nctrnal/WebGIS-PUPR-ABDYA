@@ -9,7 +9,10 @@ class Login extends BaseController
     public function index()
     {
         helper(['form']);
-        return view('/pages/login');
+        $data = [
+            'title' => 'Login'
+        ];
+        echo view('/pages/login', $data);
     }
 
     public function process()
@@ -26,7 +29,7 @@ class Login extends BaseController
                     'username' => $dataUser->username,
                     'logged_in' => TRUE
                 ]);
-                return redirect()->to(base_url('Berkas/'));
+                return redirect()->to(base_url('Admin/'));
             } else {
                 session()->setFlashdata('error', 'Password yang anda masukkan salah');
                 return redirect()->back();
