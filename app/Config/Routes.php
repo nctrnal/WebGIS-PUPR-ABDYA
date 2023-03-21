@@ -63,6 +63,9 @@ $routes->delete('Berkas/delete/(:num)', 'Berkas::delete/$1');
 //admin
 $routes->get('Admin', 'Admin::index');
 $routes->post('Admin/saveLaporan', 'Admin::saveLaporan');
+$routes->post('Admin/simpanLaporan', 'Admin::simpanLaporan');
+$routes->get('Admin/terimaLaporan/(:num)', 'Admin::terimaLaporan/$1');
+$routes->delete('Admin/tolakLaporan/(:num)', 'Admin::tolakLaporan/$1');
 
 //Login
 $routes->get('Login', 'Login::index');

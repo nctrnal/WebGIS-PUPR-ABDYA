@@ -5,10 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 style="margin-top: 1cm;">Laporan Masuk</h2>
-            <a class="btn btn-primary mb-3" href="/Admin/laporanDiterima">
-                <i class="bi bi-journal-check"> Laporan Diterima</i>
-            </a>
+            <h2 style="margin-top: 1cm;">Laporan Diterima</h2>
             <?php if (!empty(session()->getFlashdata('success'))) : ?>
                 <div class="alert alert-success" role="alert">
                     <?php echo session()->getFlashdata('success'); ?>
@@ -18,10 +15,13 @@
                 <thead class="bg-secondary">
                     <tr>
                         <th scope="col">No</th>
+                        <th scope="col">Nama Pelpaor</th>
                         <th scope="col">Lokasi</th>
                         <th scope="col">Kerusakan</th>
+                        <th scope="col">Deskripsi</th>
+                        <th scope="col">Bukti</th>
                         <th scope="col">Tanggal Laporan</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,11 +31,14 @@
                     ?>
                         <tr>
                             <th><?= $no++; ?></th>
+                            <td><?= $value->nama_pelapor; ?> </td>
                             <td><?= $value->lokasi; ?> </td>
                             <td><?= $value->jenis_kerusakan; ?> </td>
+                            <td><?= $value->deskripsi; ?> </td>
+                            <td><a href="<?= base_url('uploads/bukti/' . $value->bukti); ?>"><img width="100px" src="<?= base_url('uploads/bukti/' . $value->bukti); ?>" alt="Bukti"></a></td>
                             <td><?= $value->created_at; ?> </td>
                             <td>
-                                <a href="<?= base_url(); ?>/Admin/detailLaporan/<?= $value->id_pelaporan; ?>" class="btn btn-success">Detail</a>
+                                <a class="btn btn-success"><i class="bi bi-check-circle-fill"> Diterima</i></a>
                             </td>
                         </tr>
                     <?php

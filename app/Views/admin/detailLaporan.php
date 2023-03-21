@@ -15,18 +15,18 @@
                             <?php echo session()->getFlashdata('error'); ?>
                         </div>
                     <?php endif; ?>
-                    <form method="post" action="<?= base_url('/Admin/terimaLaporan'); ?>" enctype="multipart/form-data">
+                    <form method="post" action="<?= base_url('/Admin/terimaLaporan/' . $laporan->id_pelaporan); ?>" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
                         <div class="form-floating my-3">
-                            <input type="text" class="form-control" name="nama_pelapor" id="nama_pelapor" placeholder="nama" value="<?= $laporan->nama_pelapor; ?>" disabled>
+                            <input type="text" class="form-control" name="nama_pelapor" id="nama_pelapor" placeholder="nama" value="<?= $laporan->nama_pelapor; ?>" readonly>
                             <label for="nama_pelapor" class="form-label">Nama Pelapor</label>
                         </div>
                         <div class="form-floating my-3">
-                            <input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="lokasi" value="<?= $laporan->lokasi; ?>" disabled>
+                            <input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="lokasi" value="<?= $laporan->lokasi; ?>" readonly>
                             <label for="lokasi" class="form-label">Lokasi</label>
                         </div>
                         <div class="form-floating my-3">
-                            <select class="form-control" id="jenis_kerusakan" name="jenis_kerusakan" aria-label="Floating label select" disabled>
+                            <select class="form-control" id="jenis_kerusakan" name="jenis_kerusakan" aria-label="Floating label select" aria-readonly="<?= $laporan->jenis_kerusakan; ?>">
                                 <option selected value="<?= $laporan->jenis_kerusakan; ?>"><?= $laporan->jenis_kerusakan; ?></option>
                                 <option value="Sedang">Sedang</option>
                                 <option value="Berat">Berat</option>
@@ -34,15 +34,16 @@
                             <label for="floatingSelect">--Pilih Jenis Kerusakan--</label>
                         </div>
                         <div class="form-floating my-3">
-                            <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" disabled><?= $laporan->deskripsi; ?></textarea>
+                            <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" readonly><?= $laporan->deskripsi; ?></textarea>
                             <label for="deskripsi" class="form-label">Deskripsi</label>
                         </div>
                         <div class="form my-3">
                             <label for="bukti" class="form-label">Bukti</label>
-                            <input type="file" class="form-control" name="bukti" id="bukti" placeholder="bukti" value="<?= base_url('uploads/bukti/.' . $laporan->bukti); ?>" disabled>
+                            <input type="text" class="form-control" name="bukti" id="bukti" placeholder="bukti" value="<?= $laporan->bukti; ?>" readonly>
                             <img width="100px" src="<?= base_url('uploads/bukti/' . $laporan->bukti); ?>" alt="">
                         </div>
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Terima</button>
+                        <a href="<?= base_url(); ?>Admin/tolakLaporan/<?= $laporan->id_pelaporan; ?>" class="btn btn-danger">Tolak</a>
                     </form>
                 </div>
             </div>
