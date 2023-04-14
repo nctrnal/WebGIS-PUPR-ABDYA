@@ -1,22 +1,100 @@
 <?= $this->extend('layouts/templateAdmin'); ?>
 
 <?= $this->section('contentAdmin'); ?>
+<div class="container">
+    <h2 class="mt-3">DATA BANGUNAN IRIGASI</h2>
+    <div class="col">
+        <button id="button" type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#tambahBangunan">
+            <i class="bi bi-plus-square"></i> Tambah Data
+        </button>
+        <div class="row">
 
-
-<div class="container-fluid">
-    <button class="btn btn-primary mt-1"><i class="bi bi-pen "></i> Edit</button>
-    <div class="card mt-3">
-        <div class="card-body">
-            <div id="map" style="height: 600px;"></div>
+            <?php if (!empty(session()->getFlashdata('error'))) : ?>
+                <div class="alert alert-danger" role="alert">
+                    <h4>Periksa Entrian Form</h4>
+                    </hr />
+                    <?php echo session()->getFlashdata('error'); ?>
+                </div>
+            <?php endif; ?>
+            <?php if (!empty(session()->getFlashdata('success'))) : ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo session()->getFlashdata('success'); ?>
+                </div>
+            <?php endif; ?>
+            <table class="table table-bordered table-striped">
+                <thead class="bg-secondary">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Daerah</th>
+                        <th scope="col">Luas</th>
+                        <th scope="col">Kecamatan</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $no  = 1;
+                    foreach ($bangunan as $value) {
+                    ?>
+                        <tr>
+                            <th><?= $no++; ?></th>
+                            <td><?= $value->nama; ?> </td>
+                            <td><?= $value->luas; ?> </td>
+                            <td><?= $value->kecamatan; ?> </td>
+                            <td>
+                                <a id="button" href="<?= base_url(); ?>/Irigasi/ubahBangunanIrigasi/<?= $value->id; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Detail</a>
+                                <a id="button" href="<?= base_url(); ?>/Irigasi/hapusBangunanIrigasi/<?= $value->id; ?>" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
-<script>
-    const map = L.map('map').setView([3.837549, 96.871154], 11);
 
-    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {})
-        .addTo(map);
-</script>
 
+<!-- Modal Upload -->
+<div class="modal fade" id="tambahBangunan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Data</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="<?= base_url(); ?>/Irigasi/simpanBangunanIrigasi" enctype="multipart/form-data">
+                    <?= csrf_field(); ?>
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="nama" required autofocus>
+                        <label for="nama" class="form-label">Nama Daerah</label>
+                    </div>
+                    <div class="form-floating my-3">
+                        <input type="number" class="form-control" name="luas" id="luas" placeholder="luas" required>
+                        <label for="luas" class="form-label">Luas</label>
+                    </div>
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="kecamatan" required>
+                        <label for="kecamatan" class="form-label">Kecamatan</label>
+                    </div>
+                    <div class="form my-3">
+                        <label for="json" class="form-label">File json</label>
+                        <input type="file" class="form-control" name="json" id="json" placeholder="json" required>
+                    </div>
+                    <div class="form my-3">
+                        <label for="foto" class="form-label">Foto</label>
+                        <input type="file" class="form-control" name="foto" id="foto" placeholder="foto" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <?= $this->endSection('contentAdmin'); ?>

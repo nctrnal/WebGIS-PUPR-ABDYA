@@ -4,64 +4,79 @@ namespace App\Controllers;
 
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use App\Models\BerkasModel;
+use App\Models\KategoriModel;
 use App\Models\LaporanModel;
+use App\Models\JaringanIrigasiModel;
+use App\Models\DaerahIrigasiModel;
+use App\Models\BangunanIrigasiModel;
+use App\Models\BeritaModel;
 
 class Pages extends BaseController
 {
     protected $BerkasModel;
     protected $LaporanModel;
+    protected $KategoriModel;
+    protected $JaringanIrigasiModel;
+    protected $DaerahIrigasiModel;
+    protected $BangunanIrigasiModel;
+    protected $BeritaModel;
 
     public function __construct()
     {
         $this->BerkasModel = new BerkasModel();
         $this->LaporanModel = new LaporanModel();
+        $this->KategoriModel = new KategoriModel();
+        $this->BangunanIrigasiModel = new BangunanIrigasiModel();
+        $this->DaerahIrigasiModel = new DaerahIrigasiModel();
+        $this->JaringanIrigasiModel = new JaringanIrigasiModel();
+        $this->BeritaModel = new BeritaModel();
     }
 
     public function index()
     {
+
         $data = [
-            'title' => 'Beranda'
+            'title' => 'Beranda',
+            'berita' => $this->BeritaModel->orderBy("created_at", "desc")->first(),
+            'berita1' => $this->BeritaModel->findAll()
         ];
-        echo view('pages/home', $data);
+        return view('pages/home', $data);
+        // dd($data);
     }
 
-    public function login()
+    public function berita($id_berita)
     {
         $data = [
-            'title' => 'Login'
+            'title' => 'Berita',
+            'detail' => $this->BeritaModel->find($id_berita)
         ];
-        echo view('pages/login', $data);
+
+        return view('pages/berita', $data);
     }
 
     public function jaringanIrigasi()
     {
         $data = [
-            'title' => 'Jaringan Irigasi'
+            'title' => 'Jaringan Irigasi',
+            'jaringan' => $this->JaringanIrigasiModel->getAllJaringan()
         ];
-        echo view('pages/jaringanIrigasi', $data);
+        return view('pages/jaringanIrigasi', $data);
     }
 
     public function daerahIrigasi()
     {
         $data = [
-            'title' => 'Daerah Irigasi'
+            'title' => 'Daerah Irigasi',
+            'daerah' => $this->DaerahIrigasiModel->findAll()
         ];
         echo view('pages/daerahIrigasi', $data);
     }
 
-    public function dataAdmin()
-    {
-        $data = [
-            'title' => 'Data Admin'
-        ];
-        echo view('pages/dataAdmin', $data);
-    }
-
-
     public function bangunanIrigasi()
     {
         $data = [
-            'title' => 'Bangunan Irigasi'
+            'title' => 'Bangunan Irigasi',
+            'bangunan' => $this->BangunanIrigasiModel->findAll()
         ];
         echo view('pages/bangunanIrigasi', $data);
     }
@@ -91,9 +106,12 @@ class Pages extends BaseController
 
     public function pelaporan()
     {
+        $kategori = $this->KategoriModel->getAllKategori();
         $data = [
-            'title' => 'Pelaporan'
+            'title' => 'Pelaporan',
+            'kategori' => $kategori
         ];
         echo view('pages/pelaporan', $data);
+        // dd($data);
     }
 }

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4 || ^8.0",
+        "ckeditor/ckeditor": "^4.20",
         "codeigniter4/framework": "^4.0",
         "myth/auth": "^1.2"
     },

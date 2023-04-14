@@ -5,7 +5,10 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 style="margin-top: 1cm;">Laporan Diterima</h2>
+            <h2 class="my-3">Daftar Laporan Diterima</h2>
+            <a id="button" class="btn btn-primary mb-3" href="/Admin/lihatLaporan">
+                <i class="bi bi-journal-text"> Laporan Diterima</i>
+            </a>
             <?php if (!empty(session()->getFlashdata('success'))) : ?>
                 <div class="alert alert-success" role="alert">
                     <?php echo session()->getFlashdata('success'); ?>

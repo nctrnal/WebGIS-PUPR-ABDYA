@@ -6,15 +6,6 @@ use App\Models\LoginModel;
 
 class Login extends BaseController
 {
-    public function index()
-    {
-        helper(['form']);
-        $data = [
-            'title' => 'Login'
-        ];
-        echo view('/pages/login', $data);
-    }
-
     public function process()
     {
         $users = new LoginModel();
@@ -43,6 +34,6 @@ class Login extends BaseController
     function logout()
     {
         session()->destroy();
-        return redirect()->to('Login/');
+        return redirect()->to('Pages/');
     }
 }

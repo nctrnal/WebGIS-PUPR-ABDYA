@@ -142,6 +142,6 @@ class Berkas extends BaseController
         //     'pdf' => $this->request->getVar('pdf')
         // ]);
 
-        return redirect('berkas')->with('success', 'Data Berhasil di Update');
+        // return redirect('berkas')->with('success', 'Data Berhasil di Update');
     }
 }

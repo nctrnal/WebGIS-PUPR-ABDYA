@@ -5,8 +5,8 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 style="margin-top: 1cm;">Laporan Masuk</h2>
-            <a class="btn btn-primary mb-3" href="/Admin/laporanDiterima">
+            <h2 class="my-3">Laporan Masuk</h2>
+            <a id="button" class="btn btn-primary mb-3" href="/Admin/laporanDiterima">
                 <i class="bi bi-journal-check"> Laporan Diterima</i>
             </a>
             <?php if (!empty(session()->getFlashdata('success'))) : ?>
@@ -32,7 +32,7 @@
                         <tr>
                             <th><?= $no++; ?></th>
                             <td><?= $value->lokasi; ?> </td>
-                            <td><?= $value->jenis_kerusakan; ?> </td>
+                            <td><?= $value->deskripsi; ?> </td>
                             <td><?= $value->created_at; ?> </td>
                             <td>
                                 <a href="<?= base_url(); ?>/Admin/detailLaporan/<?= $value->id_pelaporan; ?>" class="btn btn-success">Detail</a>
@@ -46,5 +46,4 @@
         </div>
     </div>
 </div>
-
 <?= $this->endSection('contentAdmin'); ?>

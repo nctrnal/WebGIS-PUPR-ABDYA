@@ -10,10 +10,28 @@
 </div>
 
 <script>
-    const map = L.map('map').setView([3.837549, 96.871154], 11);
+    const map = L.map('map').setView([3.679549, 96.891569], 16);
 
-    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {})
-        .addTo(map);
+    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    <?php foreach ($bangunan as $value) { ?>
+        $.getJSON("<?= base_url('geoJson/bangunanIrigasi/' . $value->json); ?>", function(data) {
+            geoLayer = L.geoJson(data, {
+                style: function(feature) {
+                    return {
+                        opacity: 1.0,
+                        color: '<?= $value->warna; ?>',
+                    }
+                },
+            }).addTo(map);
+
+            geoLayer.eachLayer(function(layer) {
+                layer.bindPopup("tes");
+            });
+        });
+    <?php } ?>
 </script>
 
 <?= $this->endSection('content'); ?>

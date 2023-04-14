@@ -23,7 +23,7 @@ class Pelaporan extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
-            'jenis_kerusakan'       => [
+            'status'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],

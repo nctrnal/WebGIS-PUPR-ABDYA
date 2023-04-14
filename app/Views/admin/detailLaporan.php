@@ -26,12 +26,12 @@
                             <label for="lokasi" class="form-label">Lokasi</label>
                         </div>
                         <div class="form-floating my-3">
-                            <select class="form-control" id="jenis_kerusakan" name="jenis_kerusakan" aria-label="Floating label select" aria-readonly="<?= $laporan->jenis_kerusakan; ?>">
-                                <option selected value="<?= $laporan->jenis_kerusakan; ?>"><?= $laporan->jenis_kerusakan; ?></option>
-                                <option value="Sedang">Sedang</option>
-                                <option value="Berat">Berat</option>
+                            <select class="form-control" id="jenis_kerusakan" name="jenis_kerusakan" required>
+                                <?php foreach ($kategori as $value) { ?>
+                                    <option selectes value="<?= $value->kerusakan; ?>"><?= $value->kerusakan; ?></option>
+                                <?php } ?>
                             </select>
-                            <label for="floatingSelect">--Pilih Jenis Kerusakan--</label>
+                            <label for="floatingSelect">---Pilih Jenis Kerusakan---</label>
                         </div>
                         <div class="form-floating my-3">
                             <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" readonly><?= $laporan->deskripsi; ?></textarea>
@@ -42,8 +42,10 @@
                             <input type="text" class="form-control" name="bukti" id="bukti" placeholder="bukti" value="<?= $laporan->bukti; ?>" readonly>
                             <img width="100px" src="<?= base_url('uploads/bukti/' . $laporan->bukti); ?>" alt="">
                         </div>
-                        <button type="submit" class="btn btn-success">Terima</button>
-                        <a href="<?= base_url(); ?>Admin/tolakLaporan/<?= $laporan->id_pelaporan; ?>" class="btn btn-danger">Tolak</a>
+                        <div>
+                            <button id="button" type="submit" class="btn btn-success">Terima</button>
+                            <a id="button" href="<?= base_url(); ?>Admin/tolakLaporan/<?= $laporan->id_pelaporan; ?>" class="btn btn-danger">Tolak</a>
+                        </div>
                     </form>
                 </div>
             </div>

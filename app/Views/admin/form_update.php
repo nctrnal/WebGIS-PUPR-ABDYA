@@ -24,7 +24,7 @@
                     <label for="pdf" class="form-label">Data</label>
                     <input type="file" class="form-control" id="pdf" name="pdf" value="<?= $berkas->pdf; ?>">
                 </div>
-                <button type="submit" class="btn btn-primary" value="submit">Update</button>
+                <button id="button" type="submit" class="btn btn-primary" value="submit">Update</button>
             </form>
         </div>
     </div>
