@@ -11,8 +11,9 @@
                     <?php echo session()->getFlashdata('success'); ?>
                 </div>
             <?php endif; ?>
-            <a id="button" href="<?= base_url(); ?>/Admin/berita" class="btn btn-primary my-3">Tambah Berita</a>
-            <table class="table table-bordered">
+            <a id="button" href="<?= base_url(); ?>/Admin/berita" class="btn btn-primary my-3">Tambah Berita</a><br>
+            <input type="text" class="cd-search table-filter" data-table="table" placeholder="Cari" />
+            <table class="table table-bordered data-table">
                 <thead class="bg-secondary">
                     <tr>
                         <th scope="col">No</th>
@@ -48,32 +49,5 @@
     </div>
 </div>
 
-
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div id="summernote">
-                <p>summenote</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-    });
-</script>
 
 <?= $this->endSection('contentAdmin'); ?>

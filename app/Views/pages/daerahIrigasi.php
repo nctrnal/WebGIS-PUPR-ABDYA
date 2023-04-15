@@ -30,7 +30,13 @@
             }).addTo(map);
 
             geoLayer.eachLayer(function(layer) {
-                layer.bindPopup("nama : <?= $value->nama; ?>");
+                layer.bindPopup("Nama : <?= $value->nama; ?><br>" +
+                    "Lebar Bawah : <?= $value->lebar_bawah; ?><br>" +
+                    "Lebar Atas : <?= $value->lebar_atas; ?><br>" +
+                    "Keterangan : <?= $value->keterangan; ?><br>" +
+                    "Kecamatan : <?= $value->kecamatan; ?><br>" +
+                    "Kondisi : <?= $value->kondisi; ?><br>" +
+                    "<img id='fotoPeta' src='<?= base_url('uploads/fotoIrigasi/daerahIrigasi/' . $value->foto); ?>' >");
             });
         });
     <?php } ?>

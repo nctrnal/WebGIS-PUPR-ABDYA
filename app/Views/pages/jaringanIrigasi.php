@@ -10,7 +10,7 @@
 </div>
 
 <script>
-    const map = L.map('map').setView([3.8078861015535708, 96.75698947764022], 12);
+    const map = L.map('map').setView([3.696924, 96.885114], 11);
 
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -30,7 +30,11 @@
             }).addTo(map);
 
             geoLayer.eachLayer(function(layer) {
-                layer.bindPopup("Nama : <?= $value->nama; ?>");
+                geoLayer.bindPopup("Nama : <?= $value->nama; ?><br>" +
+                    "Panjang : <?= $value->panjang; ?><br>" +
+                    "Kodisi : <?= $value->kondisi; ?><br>" +
+                    "Kecamatan : <?= $value->kecamatan; ?><br>" +
+                    "<img src='<?= base_url('uploads/fotoIrigasi/jaringanIrigasi/' . $value->foto); ?>'>");
             });
         });
     <?php } ?>

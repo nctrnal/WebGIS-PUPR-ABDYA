@@ -6,7 +6,8 @@
     <div class="row">
         <div class="col">
             <h2 style="margin-top: 1cm; margin-bottom: 10pt">Data Irigasi</h2>
-            <table class="table table-bordered ">
+            <input type="text" class="cd-search table-filter" data-table="table" placeholder="Cari" />
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>No</th>

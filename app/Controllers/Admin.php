@@ -55,12 +55,14 @@ class Admin extends BaseController
     //menampilkan data laporan dari masyarakat
     public function lihatLaporan()
     {
-        $laporan = $this->LaporanModel->findAll();
+
         $data = [
             'title' => 'Pelaporan',
-            'laporan' => $laporan
+            'laporan' => $this->LaporanModel->findAll(),
+            // 'laporan' => $this->LaporanModel->orderBy("created_at", "desc")
         ];
 
+        // dd($data);
         echo view('admin/pelaporanAdmin', $data);
     }
 

@@ -13,7 +13,8 @@
             <?php endif; ?>
             <button id="button" type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#tambahData">
                 <i class="bi bi-plus-square"></i> Tambah Data
-            </button>
+            </button> <br>
+            <input type="text" class="cd-search table-filter" data-table="table" placeholder="Cari" />
             <table class="table table-bordered table-striped">
                 <thead class="bg-secondary">
                     <tr>

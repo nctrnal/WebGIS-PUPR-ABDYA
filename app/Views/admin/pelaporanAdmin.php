@@ -4,16 +4,17 @@
 
 <div class="container">
     <div class="row">
+        <h2 class="my-3">Laporan Masuk</h2>
         <div class="col">
-            <h2 class="my-3">Laporan Masuk</h2>
             <a id="button" class="btn btn-primary mb-3" href="/Admin/laporanDiterima">
                 <i class="bi bi-journal-check"> Laporan Diterima</i>
-            </a>
+            </a><br>
             <?php if (!empty(session()->getFlashdata('success'))) : ?>
                 <div class="alert alert-success" role="alert">
                     <?php echo session()->getFlashdata('success'); ?>
                 </div>
             <?php endif; ?>
+            <input type="text" class="cd-search table-filter" data-table="table" placeholder="Cari" />
             <table class="table table-bordered table-striped">
                 <thead class="bg-secondary">
                     <tr>

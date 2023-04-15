@@ -22,6 +22,7 @@
             <?php endif; ?>
             <!-- <div class="card">
                 <div class="card-body"> -->
+            <input type="text" class="cd-search table-filter" data-table="table" placeholder="Cari" />
             <table class="table table-bordered table-striped">
                 <thead class="bg-secondary">
                     <tr>
@@ -94,7 +95,7 @@
                         <label for="warna" class="form-label">Warna Layer</label>
                     </div>
                     <!-- <div class="form-floating my-3">
-                        <input type="text" class="form-control" name="warna" id="warna" placeholder="warna" readonly required>
+                        <input type="text" class="form-control" name="warna" id="warna" placeholder="warna" readonly>
                         <label for="warna" class="form-label">Warna Layer</label>
                     </div> -->
                     <div class="form-floating my-3">
@@ -134,7 +135,7 @@
                         <label for="foto" class="form-label">Foto</label>
                         <input type="file" class="form-control" name="foto" id="foto" placeholder="foto" required>
                     </div>
-                    <button id="button" type="submit" class="btn btn-primary"><i class="bi bi-upload"></i> Submit</button>
+                    <button id="button" type="submit" class="btn btn-primary" value="Simpan"><i class="bi bi-upload"></i> Submit</button>
                 </form>
             </div>
         </div>
