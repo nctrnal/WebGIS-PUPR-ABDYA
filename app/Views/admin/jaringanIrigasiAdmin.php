@@ -96,6 +96,10 @@
                         <label for="json" class="form-label">File json</label>
                         <input type="file" class="form-control" name="json" id="json" placeholder="json" required>
                     </div>
+                    <div class="form-floating my-3">
+                        <input type="color" class="form-control" name="warna" id="warna" placeholder="warna" required>
+                        <label for="warna" class="form-label">Warna Layer</label>
+                    </div>
                     <div class="form my-3">
                         <label for="foto" class="form-label">Foto</label>
                         <input type="file" class="form-control" name="foto" id="foto" placeholder="foto" required>

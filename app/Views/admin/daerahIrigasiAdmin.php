@@ -20,8 +20,6 @@
                     <?php echo session()->getFlashdata('success'); ?>
                 </div>
             <?php endif; ?>
-            <!-- <div class="card">
-                <div class="card-body"> -->
             <input type="text" class="cd-search table-filter" data-table="table" placeholder="Cari" />
             <table class="table table-bordered table-striped">
                 <thead class="bg-secondary">
@@ -65,19 +63,6 @@
     </div>
 </div>
 
-<script>
-    // function picker() {
-    //     var pick = document.getElementById("pick").value;
-    //     var warna = document.getElementById("warna");
-    //     warna.value = pick;
-    // }
-
-    // document.getElementById("pick").addEventListener('change', function() {
-
-    //     document.getElementById("warna").value = document.getElementById('pick').value;
-    // })
-</script>
-
 
 <!-- Modal Upload -->
 <div class="modal fade" id="tambahDaerah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -90,14 +75,6 @@
             <div class="modal-body">
                 <form method="post" action="<?= base_url(); ?>/Irigasi/simpanDaerahIrigasi" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
-                    <div class="form-floating my-3">
-                        <input type="color" class="form-control" name="warna" id="warna" placeholder="warna" required>
-                        <label for="warna" class="form-label">Warna Layer</label>
-                    </div>
-                    <!-- <div class="form-floating my-3">
-                        <input type="text" class="form-control" name="warna" id="warna" placeholder="warna" readonly>
-                        <label for="warna" class="form-label">Warna Layer</label>
-                    </div> -->
                     <div class="form-floating my-3">
                         <input type="text" class="form-control" name="nama" id="nama" placeholder="nama" autofocus required>
                         <label for="nama" class="form-label">Nama Daerah</label>
@@ -130,6 +107,10 @@
                     <div class="form my-3">
                         <label for="json" class="form-label">File json</label>
                         <input type="file" class="form-control" name="json" id="json" placeholder="json" required>
+                    </div>
+                    <div class="form-floating my-3">
+                        <input type="color" class="form-control" name="warna" id="warna" placeholder="warna" required>
+                        <label for="warna" class="form-label">Warna Layer</label>
                     </div>
                     <div class="form my-3">
                         <label for="foto" class="form-label">Foto</label>

@@ -32,6 +32,10 @@ class Berita extends Migration
                 //kalo migrasi nya gagal, ganti aja type nya jadi VARCHAR, trus constraint nya jangan comment
                 // 'constraint'     => '1000000',
             ],
+            'ringkasan'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '100',
+            ],
             'foto'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',

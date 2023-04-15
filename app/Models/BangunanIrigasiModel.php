@@ -9,7 +9,7 @@ class BangunanIrigasiModel extends Model
     protected $table            = 'bangunanIrigasi';
     protected $primaryKey       = 'id';
     protected $returnType       = 'object';
-    protected $allowedFields    = ['nama', 'luas', 'kecamatan', 'json', 'foto'];
+    protected $allowedFields    = ['nama', 'luas', 'kecamatan', 'warna', 'json', 'foto'];
     protected $useTimestamps = true;
 
     public function getAllBangunan()

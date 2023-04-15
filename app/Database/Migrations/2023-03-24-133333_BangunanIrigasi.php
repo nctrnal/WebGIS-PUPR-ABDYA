@@ -27,6 +27,10 @@ class BangunanIrigasi extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
+            'warna'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+            ],
             'json'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',

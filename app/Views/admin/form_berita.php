@@ -59,10 +59,6 @@
                             <label for="body" class="form-label">Body</label>
                             <textarea class="form-control" style="height: 100px;" name="body" id="body" placeholder="body" required></textarea>
                         </div>
-                        <div class="form-floating my-3">
-                            <input type="text" class="form-control" name="ringkasan" id="ringkasan" placeholder="ringkasan" maxlength="100" readonly required>
-                            <label for="ringkasan" class="form-label">Ringkasan</label>
-                        </div>
                         <div class="form my-3">
                             <label for="foto" class="form-label">Foto</label>
                             <input type="file" class="form-control" name="foto" id="foto" placeholder="foto" required>

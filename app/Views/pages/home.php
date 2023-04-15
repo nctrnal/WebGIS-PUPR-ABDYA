@@ -15,7 +15,7 @@
                             Diupload oleh <span class="text-decoration-none"> <?= $berita->penulis; ?> </span> dengan kategori <span class="text-decoration-none"> <?= $berita->kategori; ?></span> pada <?= $berita->created_at; ?>
                         </small>
                     </p>
-                    <p class="card-text"><?= $berita->ringkasan; ?>...</p>
+                    <p class="card-text"><?= substr($berita->body, 0, 100); ?>...</p>
                     <a style="margin-top: 10px;" href="/Pages/berita/<?= $berita->id_berita; ?>" id="button" class="text-decoration-none btn btn-primary">Read more..</a>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                                             Diupload oleh <span class="text-decoration-none"> <?= $a->penulis; ?> pada </span> <?= $a->created_at; ?>
                                         </small>
                                     </p>
-                                    <span class="card-text"><?= $a->ringkasan; ?>...</span><br>
+                                    <span class="card-text"><?= substr($a->body, 0, 100); ?>...</span><br>
                                     <a id="button" style="margin-top: 10px;" href="/Pages/berita/<?= $a->id_berita; ?>" class="btn btn-primary">Read more...</a>
                                 </div>
                             </div>

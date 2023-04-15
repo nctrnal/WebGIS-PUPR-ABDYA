@@ -28,7 +28,7 @@ class Irigasi extends BaseController
         $data = [
             'title' => 'Jaringan Irigasi',
             'kategori' => $this->KategoriModel->getAllKategori(),
-            'jaringan' => $this->JaringanIrigasiModel->getAllJaringan()
+            'jaringan' => $this->JaringanIrigasiModel->getAllJaringan(),
         ];
 
         echo view('admin/jaringanIrigasiAdmin', $data);
@@ -52,6 +52,7 @@ class Irigasi extends BaseController
             'daerah' => $this->DaerahIrigasiModel->getAllDaerah()
         ];
 
+        // dd($data);
         echo view('admin/daerahIrigasiAdmin', $data);
     }
 
@@ -79,6 +80,12 @@ class Irigasi extends BaseController
                 ]
             ],
             'kondisi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Tidak boleh kosong'
+                ]
+            ],
+            'warna' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Tidak boleh kosong'
@@ -113,6 +120,7 @@ class Irigasi extends BaseController
             'panjang' => $this->request->getVar('panjang'),
             'kecamatan' => $this->request->getVar('kecamatan'),
             'kondisi' => $this->request->getVar('kondisi'),
+            'warna' => $this->request->getVar('warna'),
             'json' => $fileJson,
             'foto' => $fileName
         ]);
@@ -171,6 +179,12 @@ class Irigasi extends BaseController
                         'required' => '{field} Tidak boleh kosong'
                     ]
                 ],
+                'warna' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak boleh kosong'
+                    ]
+                ],
                 'json' => [
                     'rules' => 'uploaded[json]|mime_in[json,application/json,text/json]',
                     'errors' => [
@@ -201,6 +215,7 @@ class Irigasi extends BaseController
                 'panjang' => $this->request->getVar('panjang'),
                 'kecamatan' => $this->request->getVar('kecamatan'),
                 'kondisi' => $this->request->getVar('kondisi'),
+                'warna' => $this->request->getVar('warna'),
                 'json' => $fileJson,
                 'foto' => $fileName
             ]);
@@ -363,6 +378,12 @@ class Irigasi extends BaseController
                     'required' => '{field} Tidak boleh kosong'
                 ]
             ],
+            'warna' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Tidak boleh kosong'
+                ]
+            ],
             'json' => [
                 'rules' => 'uploaded[json]|mime_in[json,application/json,text/json]',
                 'errors' => [
@@ -395,6 +416,7 @@ class Irigasi extends BaseController
             'keterangan' => $this->request->getVar('keterangan'),
             'kecamatan' => $this->request->getVar('kecamatan'),
             'kondisi' => $this->request->getVar('kondisi'),
+            'warna' => $this->request->getVar('warna'),
             'json' => $fileJson,
             'foto' => $fileName
         ]);
@@ -423,6 +445,12 @@ class Irigasi extends BaseController
                 ]
             ],
             'kecamatan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Tidak boleh kosong'
+                ]
+            ],
+            'warna' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Tidak boleh kosong'
@@ -457,6 +485,7 @@ class Irigasi extends BaseController
             'nama' => $this->request->getVar('nama'),
             'luas' => $this->request->getVar('luas'),
             'kecamatan' => $this->request->getVar('kecamatan'),
+            'warna' => $this->request->getVar('warna'),
             'json' => $fileJson,
             'foto' => $fileName
         ]);
@@ -508,6 +537,12 @@ class Irigasi extends BaseController
                         'required' => '{field} Tidak boleh kosong'
                     ]
                 ],
+                'warna' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak boleh kosong'
+                    ]
+                ],
                 'json' => [
                     'rules' => 'uploaded[json]|mime_in[json,application/json,text/json]',
                     'errors' => [
@@ -537,6 +572,7 @@ class Irigasi extends BaseController
                 'nama' => $this->request->getVar('nama'),
                 'luas' => $this->request->getVar('luas'),
                 'kecamatan' => $this->request->getVar('kecamatan'),
+                'warna' => $this->request->getVar('warna'),
                 'json' => $fileJson,
                 'foto' => $fileName
             ]);

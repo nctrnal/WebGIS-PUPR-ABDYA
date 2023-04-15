@@ -38,7 +38,7 @@ class Pages extends BaseController
         $data = [
             'title' => 'Beranda',
             'berita' => $this->BeritaModel->orderBy("created_at", "desc")->first(),
-            'berita1' => $this->BeritaModel->findAll()
+            'berita1' => $this->BeritaModel->findAll(),
         ];
         return view('pages/home', $data);
         // dd($data);
