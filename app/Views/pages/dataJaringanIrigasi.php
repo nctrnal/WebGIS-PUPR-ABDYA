@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 style="margin-top: 1cm; margin-bottom: 10pt">Data Irigasi</h2>
+            <h2 style="margin-top: 1cm; margin-bottom: 10pt">Berkas Jaringan Irigasi</h2>
             <input type="text" class="cd-search table-filter" data-table="table" placeholder="Cari" />
             <table class="table table-bordered">
                 <thead>

@@ -29,8 +29,13 @@
 
 /* Body */
 body {
-    background-color: #b1e98f;
+    background: linear-gradient(170deg, #b1e98f, #85e626);
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+}
+
+.container {
+	position: relative;
 }
 
 /* table */
@@ -43,7 +48,8 @@ body {
     text-align: center;
     vertical-align: middle;
     table-layout: auto;
-    
+    border-spacing: 1;
+    border-collapse: collapse;
 }
 
 /* Search Box */

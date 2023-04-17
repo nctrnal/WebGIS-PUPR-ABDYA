@@ -140,7 +140,7 @@ class Admin extends BaseController
         //membuat session, jika proses insert data kedalam database berhasil
         //akan menampilkan pesan 'Laporan Berhasil diupload'
         session()->setFlashdata('success', 'Laporan Berhasil diupload');
-        return redirect()->to(base_url('Pages/pelaporan'));
+        return redirect()->to(base_url('/'));
     }
 
     //function ini digunakan untuk melihat detail laporan masyarakat.

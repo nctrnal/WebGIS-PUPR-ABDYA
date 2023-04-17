@@ -2,11 +2,16 @@
 
 <?= $this->section('content'); ?>
 <div class="container">
+    <p class="my-3">Bagi masyarakat yang ingin membuat pengaduan<br>terkait kerusakan irigasi dapat membuat laporan<br>dengan menekan tombil berikut</p>
+    <small style="color: red;">*Harap laporan yang dikirimkan dapat dipertanggung jawabkan</small><br>
+    <button id="button" type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#laporKerusakan">
+        <i class="bi bi-pen"></i> Buat Laporan
+    </button>
     <div class="row">
         <div class="col">
             <div class="card my-3" id="card-berita-home">
                 <div id="berita">
-                    <img src="<?= base_url('uploads/berita/' . $berita->foto); ?>" alt="" id="img-berita-card">
+                    <img src="<?= base_url('uploads/berita/' . $berita->foto); ?>" alt="<?= $berita->kategori; ?>" id="img-berita-card" class="img-fluid">
                 </div>
                 <div class="card-body text-center">
                     <h3 class="card-title"><a href="/Pages/berita/<?= $berita->id_berita; ?>" class="text-decoration-none text-dark"><?= $berita->judul; ?></a></h3>
@@ -42,6 +47,53 @@
                         </div>
                     <?php } ?>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Upload -->
+<div class="modal fade" id="laporKerusakan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Buat Laporan</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php if (!empty(session()->getFlashdata('success'))) : ?>
+                    <div class="mt-3 alert alert-success alert-dismissible fade show" role="alert">
+                        <?php echo session()->getFlashdata('success'); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (!empty(session()->getFlashdata('error'))) : ?>
+                    <div class="mt-3 alert alert-error alert-dismissible fade show" role="alert">
+                        <?php echo session()->getFlashdata('error'); ?>
+                    </div>
+                <?php endif; ?>
+                <form method="post" action="<?= base_url(); ?>/Admin/saveLaporan" enctype="multipart/form-data">
+                    <?= csrf_field(); ?>
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" name="nama_pelapor" id="nama_pelapor" placeholder="nama" required autofocus>
+                        <label for="nama_pelapor" class="form-label">Nama Pelapor</label>
+                    </div>
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="lokasi" required>
+                        <label for="lokasi" class="form-label">Lokasi</label>
+                    </div>
+                    <div class="form-floating my-3">
+                        <textarea style="height: 300px;" class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" required></textarea>
+                        <label for="deskripsi" class="form-label">Deskripsi</label>
+                    </div>
+                    <div class="form my-3">
+                        <label for="bukti" class="form-label">Bukti</label>
+                        <input type="file" class="form-control" name="bukti" id="bukti" placeholder="bukti" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="button" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
