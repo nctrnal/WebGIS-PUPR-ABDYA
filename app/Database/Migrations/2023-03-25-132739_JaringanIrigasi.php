@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class BangunanIrigasi extends Migration
+class JaringanIrigasi extends Migration
 {
     public function up()
     {
@@ -19,13 +19,13 @@ class BangunanIrigasi extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
-            'luas'       => [
+            'panjang'       => [
                 'type'           => 'INT',
                 'constraint'     => 11,
             ],
             'kecamatan'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255',
+                'type'           => 'INT',
+                'constraint'     => 11,
             ],
             'warna'       => [
                 'type'           => 'VARCHAR',
@@ -49,11 +49,11 @@ class BangunanIrigasi extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('bangunanIrigasi');
+        $this->forge->createTable('jaringanIrigasi');
     }
 
     public function down()
     {
-        $this->forge->dropTable('bangunanIrigasi');
+        $this->forge->dropTable('jaringanIrigasi');
     }
 }

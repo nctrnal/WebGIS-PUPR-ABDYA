@@ -27,7 +27,6 @@ class Irigasi extends BaseController
     {
         $data = [
             'title' => 'Jaringan Irigasi',
-            'kategori' => $this->KategoriModel->getAllKategori(),
             'jaringan' => $this->JaringanIrigasiModel->getAllJaringan(),
         ];
 
@@ -48,13 +47,14 @@ class Irigasi extends BaseController
     {
         $data = [
             'title' => 'Daerah Irigasi',
-            'kategori' => $this->KategoriModel->getAllKategori(),
             'daerah' => $this->DaerahIrigasiModel->getAllDaerah()
         ];
 
         // dd($data);
         echo view('admin/daerahIrigasiAdmin', $data);
     }
+
+
 
     //UNTUK JARINGAN IRIGASI
     //Upload Jaringan Irigasi
@@ -74,12 +74,6 @@ class Irigasi extends BaseController
                 ]
             ],
             'kecamatan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Tidak boleh kosong'
-                ]
-            ],
-            'kondisi' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Tidak boleh kosong'
@@ -119,7 +113,6 @@ class Irigasi extends BaseController
             'nama' => $this->request->getVar('nama'),
             'panjang' => $this->request->getVar('panjang'),
             'kecamatan' => $this->request->getVar('kecamatan'),
-            'kondisi' => $this->request->getVar('kondisi'),
             'warna' => $this->request->getVar('warna'),
             'json' => $fileJson,
             'foto' => $fileName
@@ -173,12 +166,6 @@ class Irigasi extends BaseController
                         'required' => '{field} Tidak boleh kosong'
                     ]
                 ],
-                'kondisi' => [
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{field} Tidak boleh kosong'
-                    ]
-                ],
                 'warna' => [
                     'rules' => 'required',
                     'errors' => [
@@ -214,7 +201,6 @@ class Irigasi extends BaseController
                 'nama' => $this->request->getVar('nama'),
                 'panjang' => $this->request->getVar('panjang'),
                 'kecamatan' => $this->request->getVar('kecamatan'),
-                'kondisi' => $this->request->getVar('kondisi'),
                 'warna' => $this->request->getVar('warna'),
                 'json' => $fileJson,
                 'foto' => $fileName
@@ -227,9 +213,11 @@ class Irigasi extends BaseController
         }
     }
 
-    //UNTUK DAERAH IRIGASI
+
+
+    //UNTUK Bangunan IRIGASI
     //Upload daerah irigasi dan validasi
-    public function simpanDaerahIrigasi()
+    public function simpanBangunanIrigasi()
     {
         if (!$this->validate([
             'nama' => [
@@ -294,12 +282,12 @@ class Irigasi extends BaseController
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
-        $daerah = $this->DaerahIrigasiModel;
-        $dataDaerah = $this->request->getFile('foto');
+        $bangunan = $this->BangunanIrigasiModel;
+        $dataBangunan = $this->request->getFile('foto');
         $dataJson = $this->request->getFile('json');
         $fileJson = $dataJson->getRandomName();
-        $fileName = $dataDaerah->getRandomName();
-        $daerah->insert([
+        $fileName = $dataBangunan->getRandomName();
+        $bangunan->insert([
             'nama' => $this->request->getVar('nama'),
             'lebar_bawah' => $this->request->getVar('lebar_bawah'),
             'lebar_atas' => $this->request->getVar('lebar_atas'),
@@ -311,35 +299,35 @@ class Irigasi extends BaseController
             'foto' => $fileName
         ]);
 
-        $dataJson->move('geojson/daerahIrigasi/', $fileJson);
-        $dataDaerah->move('uploads/fotoIrigasi/daerahIrigasi/', $fileName);
-        session()->setFlashdata('success', 'Daerah irigasi berhasil di upload');
-        return redirect()->to(base_url('/Irigasi/daerahIrigasiAdmin'));
+        $dataJson->move('geojson/bangunanIrigasi/', $fileJson);
+        $dataBangunan->move('uploads/fotoIrigasi/BangunanIrigasi/', $fileName);
+        session()->setFlashdata('success', 'Bangunan irigasi berhasil di upload');
+        return redirect()->to(base_url('/Irigasi/BangunanIrigasiAdmin'));
     }
 
-    //hapus daerah irigasi
-    public function hapusDaerahIrigasi($id = null)
+    //hapus bangunan irigasi
+    public function hapusBangunanIrigasi($id = null)
     {
-        $daerah = $this->DaerahIrigasiModel;
-        $daerah->delete($id);
-        session()->setFlashdata('success', 'Daerah Irigasi Berhasil Dihapus');
-        return redirect()->to('/Irigasi/daerahIrigasiAdmin');
+        $bangunan = $this->BangunanIrigasiModel;
+        $bangunan->delete($id);
+        session()->setFlashdata('success', 'Bangunan Irigasi Berhasil Dihapus');
+        return redirect()->to('/Irigasi/bangunanIrigasiAdmin');
     }
 
-    //update daerah irigasi
-    public function ubahDaerahIrigasi($id)
+    //update bangunan irigasi
+    public function ubahBangunanIrigasi($id)
     {
 
         $data = [
             'title' => 'Update',
-            'daerah' => $this->DaerahIrigasiModel->find($id),
+            'bangunan' => $this->BangunanIrigasiModel->find($id),
             'kategori' => $this->KategoriModel->findAll()
         ];
-        return view('admin/updateDaerah', $data);
+        return view('admin/updateBangunan', $data);
     }
 
     //Validasi dan update data kedalam database
-    public function simpanUbahDaerahIrigasi($id)
+    public function simpanUbahBangunanIrigasi($id)
     {
         if (!$this->validate([
             'nama' => [
@@ -404,12 +392,12 @@ class Irigasi extends BaseController
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
-        $daerah = $this->DaerahIrigasiModel;
-        $dataDaerah = $this->request->getFile('foto');
+        $bangunan = $this->BangunanIrigasiModel;
+        $dataBangunan = $this->request->getFile('foto');
         $dataJson = $this->request->getFile('json');
         $fileJson = $dataJson->getRandomName();
-        $fileName = $dataDaerah->getRandomName();
-        $daerah->update($id, [
+        $fileName = $dataBangunan->getRandomName();
+        $bangunan->update($id, [
             'nama' => $this->request->getVar('nama'),
             'lebar_bawah' => $this->request->getVar('lebar_bawah'),
             'lebar_atas' => $this->request->getVar('lebar_atas'),
@@ -421,15 +409,15 @@ class Irigasi extends BaseController
             'foto' => $fileName
         ]);
 
-        $dataJson->move('geojson/daerahIrigasi/', $fileJson);
-        $dataDaerah->move('uploads/fotoIrigasi/daerahIrigasi/', $fileName);
-        session()->setFlashdata('success', 'Daerah irigasi berhasil diubah');
-        return redirect()->to(base_url('/Irigasi/daerahIrigasiAdmin'));
+        $dataJson->move('geojson/bangunanIrigasi/', $fileJson);
+        $dataBangunan->move('uploads/fotoIrigasi/bangunanIrigasi/', $fileName);
+        session()->setFlashdata('success', 'Bangunan irigasi berhasil diubah');
+        return redirect()->to(base_url('/Irigasi/bangunanIrigasiAdmin'));
     }
 
     //UNTUK BANGUNAN IRIGASI
     //Simpan bangunan irigasi
-    public function simpanBangunanIrigasi()
+    public function simpanDaerahIrigasi()
     {
         if (!$this->validate([
             'nama' => [
@@ -476,7 +464,7 @@ class Irigasi extends BaseController
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
-        $irigasi = $this->BangunanIrigasiModel;
+        $irigasi = $this->DaerahIrigasiModel;
         $dataIrigasi = $this->request->getFile('foto');
         $dataJson = $this->request->getFile('json');
         $fileJson = $dataJson->getRandomName();
@@ -490,33 +478,33 @@ class Irigasi extends BaseController
             'foto' => $fileName
         ]);
 
-        $dataJson->move('geojson/bangunanIrigasi/', $fileJson);
-        $dataIrigasi->move('uploads/fotoIrigasi/bangunanIrigasi/', $fileName);
-        session()->setFlashdata('success', 'Bangunan Irigasi Berhasil diupload');
-        return redirect()->to(base_url('/Irigasi/bangunanIrigasiAdmin'));
+        $dataJson->move('geojson/daerahIrigasi/', $fileJson);
+        $dataIrigasi->move('uploads/fotoIrigasi/daerahIrigasi/', $fileName);
+        session()->setFlashdata('success', 'Daerah Irigasi Berhasil diupload');
+        return redirect()->to(base_url('/Irigasi/daerahIrigasiAdmin'));
     }
 
-    //hapus bangunan irigasi
-    public function hapusBangunanIrigasi($id = null)
+    //hapus daerah irigasi
+    public function hapusDaerahIrigasi($id = null)
     {
-        $irigasi = $this->BangunanIrigasiModel;
+        $irigasi = $this->DaerahIrigasiModel;
         $irigasi->delete($id);
-        session()->setFlashdata('success', 'Bangunan Irigasi Berhasil Dihapus');
-        return redirect()->to('/Irigasi/bangunanIrigasiAdmin');
+        session()->setFlashdata('success', 'Daerah Irigasi Berhasil Dihapus');
+        return redirect()->to('/Irigasi/daerahIrigasiAdmin');
     }
 
-    // update bangunan irigasi
-    public function ubahBangunanIrigasi($id)
+    // update daerah irigasi
+    public function ubahDaerahIrigasi($id)
     {
         $data = [
             'title' => 'Update',
-            'bangunan' => $this->BangunanIrigasiModel->find($id),
+            'daerah' => $this->DaerahIrigasiModel->find($id),
         ];
-        return view('admin/updateBangunan', $data);
+        return view('admin/updateDaerah', $data);
     }
 
-    //validasi dan update bangunan irigasi
-    public function simpanUbahBangunanIrigasi($id)
+    //validasi dan update daerah irigasi
+    public function simpanUbahDaerahIrigasi($id)
     { {
             if (!$this->validate([
                 'nama' => [
@@ -563,12 +551,12 @@ class Irigasi extends BaseController
                 session()->setFlashdata('error', $this->validator->listErrors());
                 return redirect()->back()->withInput();
             }
-            $bangunan = $this->BangunanIrigasiModel;
+            $daerah = $this->DaerahIrigasiModel;
             $dataIrigasi = $this->request->getFile('foto');
             $dataJson = $this->request->getFile('json');
             $fileJson = $dataJson->getRandomName();
             $fileName = $dataIrigasi->getRandomName();
-            $bangunan->update($id, [
+            $daerah->update($id, [
                 'nama' => $this->request->getVar('nama'),
                 'luas' => $this->request->getVar('luas'),
                 'kecamatan' => $this->request->getVar('kecamatan'),
@@ -577,10 +565,10 @@ class Irigasi extends BaseController
                 'foto' => $fileName
             ]);
 
-            $dataJson->move('geojson/bangunanIrigasi/', $fileJson);
-            $dataIrigasi->move('uploads/fotoIrigasi/bangunanIrigasi/', $fileName);
-            session()->setFlashdata('success', 'Data Bangunan Irigasi Berhasil Diupload');
-            return redirect()->to(base_url('/Irigasi/bangunanIrigasiAdmin'));
+            $dataJson->move('geojson/daerahIrigasi/', $fileJson);
+            $dataIrigasi->move('uploads/fotoIrigasi/daerahIrigasi/', $fileName);
+            session()->setFlashdata('success', 'Data Daerah Irigasi Berhasil Diupload');
+            return redirect()->to(base_url('/Irigasi/daerahIrigasiAdmin'));
         }
     }
 }

@@ -32,7 +32,6 @@
             geoLayer.eachLayer(function(layer) {
                 geoLayer.bindPopup("Nama : <?= $value->nama; ?><br>" +
                     "Panjang : <?= $value->panjang; ?><br>" +
-                    "Kodisi : <?= $value->kondisi; ?><br>" +
                     "Kecamatan : <?= $value->kecamatan; ?><br>" +
                     "<img src='<?= base_url('uploads/fotoIrigasi/jaringanIrigasi/' . $value->foto); ?>'>");
             });

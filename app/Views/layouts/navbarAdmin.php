@@ -4,9 +4,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-
-
+        <div class="collapse navbar-collapse dropdown" id="navbarNav">
             <ul class="navbar-nav ">
                 <li class="nav-item" id="nav-id">
                     <a class="nav-link <?php if ($title == 'Beranda') : ?> active <?php endif; ?>" aria-current="page" href="/Admin">Beranda</a>
@@ -24,7 +22,10 @@
                     <a class="nav-link <?php if ($title == 'Pelaporan') : ?> active <?php endif; ?>" href="/Admin/lihatLaporan">Pelaporan</a>
                 </li>
                 <li class="nav-item" id="nav-id">
-                    <a class="nav-link <?php if ($title == 'Data Irigasi') : ?> active <?php endif; ?>" href="/Admin/dataIrigasiAdmin">Data</a>
+                    <a class="nav-link <?php if ($title == 'Data Irigasi') : ?> active <?php endif; ?>" href="/Admin/dataDaerahIrigasiAdmin">Berkas Daerah Irigasi</a>
+                </li>
+                <li class="nav-item" id="nav-id">
+                    <a class="nav-link <?php if ($title == 'Data Irigasi') : ?> active <?php endif; ?>" href="/Admin/dataJaringanIrigasiAdmin">Berkas Jaringan Irigasi</a>
                 </li>
             </ul>
             <ul class="navbar-nav nav-login">
@@ -32,7 +33,6 @@
                     <a style="border-radius: 15px;" class="nav-link <?php if ($title == 'Login') : ?> active <?php endif; ?> btn btn-success" href="<?= base_url(); ?>Login/logout"><i class="bi bi-box-arrow-left"></i> Logout</a>
                 </li>
             </ul>
-
         </div>
     </div>
 </nav>

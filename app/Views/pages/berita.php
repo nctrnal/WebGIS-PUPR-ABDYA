@@ -2,6 +2,18 @@
 
 <?= $this->section('content'); ?>
 
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" id="dropdown-menu-button" data-bs-toggle="dropdown" aria-expanded="false">
+        Dropdown link
+    </button>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdown-menu-button">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+    </ul>
+</div>
+
 <div class="container">
     <div class="row justify-content-center mb-5">
         <div class="col-md-8">

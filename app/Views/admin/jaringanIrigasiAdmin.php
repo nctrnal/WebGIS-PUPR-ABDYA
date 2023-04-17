@@ -29,7 +29,6 @@
                         <th scope="col">Nama Daerah</th>
                         <th scope="col">Panjang Jaringan (meter)</th>
                         <th scope="col">Kondisi</th>
-                        <th scope="col">Kecamatan</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -43,7 +42,6 @@
                             <td><?= $value->nama; ?></td>
                             <td><?= $value->panjang; ?></td>
                             <td><?= $value->kecamatan; ?></td>
-                            <td><?= $value->kondisi; ?></td>
                             <td>
                                 <a href="<?= base_url(); ?>/Irigasi/ubahJaringanIrigasi/<?= $value->id; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Detail</a>
                                 <a href="<?= base_url(); ?>/Irigasi/hapusJaringanIrigasi/<?= $value->id; ?>" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
@@ -82,15 +80,6 @@
                     <div class="form-floating my-3">
                         <input type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="kecamatan" required autofocus>
                         <label for="kecamatan" class="form-label">Kecamatan</label>
-                    </div>
-                    <div class="form-floating my-3">
-                        <select class="form-control" id="kondisi" name="kondisi" required>
-                            <option selected disabled>--Kondisi--</option>
-                            <?php foreach ($kategori as $value) { ?>
-                                <option value="<?= $value->kerusakan; ?>"><?= $value->kerusakan; ?></option>
-                            <?php } ?>
-                        </select>
-                        <label for="floatingSelect">---Kondisi---</label>
                     </div>
                     <div class="form my-3">
                         <label for="json" class="form-label">File json</label>

@@ -1,7 +1,7 @@
 <?= $this->extend('layouts/template'); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid">
+<div class="container-fluid wrap-content">
     <div class="card mt-3">
         <div class="card-body">
             <div id="map" style="height: 600px;"></div>
@@ -22,16 +22,21 @@
                 style: function(feature) {
                     return {
                         opacity: 1.0,
-                        color: '<?= $value->warna; ?>',
+                        color: 'black',
+                        fillOpacity: 0.5,
+                        fillColor: '<?= $value->warna; ?>'
                     }
                 },
             }).addTo(map);
 
             geoLayer.eachLayer(function(layer) {
                 layer.bindPopup("Nama : <?= $value->nama; ?><br>" +
-                    "Luas : <?= $value->luas; ?><br>" +
+                    "Lebar Bawah : <?= $value->lebar_bawah; ?><br>" +
+                    "Lebar Atas : <?= $value->lebar_atas; ?><br>" +
+                    "Keterangan : <?= $value->keterangan; ?><br>" +
                     "Kecamatan : <?= $value->kecamatan; ?><br>" +
-                    "<img src='<?= base_url('uploads/fotoIrigasi/bangunanIrigasi/' . $value->foto); ?>'>");
+                    "Kondisi : <?= $value->kondisi; ?><br>" +
+                    "<img id='fotoPeta' src='<?= base_url('uploads/fotoIrigasi/bangunanIrigasi/' . $value->foto); ?>' >");
             });
         });
     <?php } ?>

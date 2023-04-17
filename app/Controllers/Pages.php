@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use App\Models\BerkasModel;
+use App\Models\BerkasJaringanModel;
 use App\Models\KategoriModel;
 use App\Models\LaporanModel;
 use App\Models\JaringanIrigasiModel;
@@ -14,6 +15,7 @@ use App\Models\BeritaModel;
 class Pages extends BaseController
 {
     protected $BerkasModel;
+    protected $BerkasJaringanModel;
     protected $LaporanModel;
     protected $KategoriModel;
     protected $JaringanIrigasiModel;
@@ -24,6 +26,7 @@ class Pages extends BaseController
     public function __construct()
     {
         $this->BerkasModel = new BerkasModel();
+        $this->BerkasJaringanModel = new BerkasJaringanModel();
         $this->LaporanModel = new LaporanModel();
         $this->KategoriModel = new KategoriModel();
         $this->BangunanIrigasiModel = new BangunanIrigasiModel();
@@ -81,7 +84,7 @@ class Pages extends BaseController
         echo view('pages/bangunanIrigasi', $data);
     }
 
-    public function dataIrigasi()
+    public function dataDaerahIrigasi()
     {
         $berkas = $this->BerkasModel->findAll();
         $data = [
@@ -89,7 +92,7 @@ class Pages extends BaseController
             'berkas' => $berkas
         ];
 
-        echo view('pages/dataIrigasi', $data);
+        echo view('pages/dataDaerahIrigasi', $data);
         // dd($data);
     }
 
@@ -102,6 +105,18 @@ class Pages extends BaseController
         ];
 
         echo view('pages/detail', $data);
+    }
+
+    public function dataJaringanIrigasi()
+    {
+        $berkas = $this->BerkasJaringanModel->findAll();
+        $data = [
+            'title' => 'Data Irigasi',
+            'berkas' => $berkas
+        ];
+
+        echo view('pages/dataJaringanIrigasi', $data);
+        // dd($data);
     }
 
     public function pelaporan()

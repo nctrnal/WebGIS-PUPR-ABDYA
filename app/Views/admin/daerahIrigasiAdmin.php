@@ -8,6 +8,7 @@
             <i class="bi bi-plus-square"></i> Tambah Data
         </button>
         <div class="row">
+
             <?php if (!empty(session()->getFlashdata('error'))) : ?>
                 <div class="alert alert-danger" role="alert">
                     <h4>Periksa Entrian Form</h4>
@@ -26,11 +27,8 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Nama Daerah</th>
-                        <th scope="col">Lebar Atas</th>
-                        <th scope="col">Lebar Bawah</th>
-                        <th scope="col">Keterangan</th>
+                        <th scope="col">Luas</th>
                         <th scope="col">Kecamatan</th>
-                        <th scope="col">Kondisi</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -42,14 +40,11 @@
                         <tr>
                             <th><?= $no++; ?></th>
                             <td><?= $value->nama; ?> </td>
-                            <td><?= $value->lebar_atas; ?> </td>
-                            <td><?= $value->lebar_bawah; ?> </td>
-                            <td><?= $value->keterangan; ?> </td>
+                            <td><?= $value->luas; ?> </td>
                             <td><?= $value->kecamatan; ?> </td>
-                            <td><?= $value->kondisi; ?> </td>
                             <td>
-                                <a href="<?= base_url(); ?>/Irigasi/ubahDaerahIrigasi/<?= $value->id; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Detail</a>
-                                <a href="<?= base_url(); ?>/Irigasi/hapusDaerahIrigasi/<?= $value->id; ?>" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
+                                <a id="button" href="<?= base_url(); ?>/Irigasi/ubahDaerahIrigasi/<?= $value->id; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Detail</a>
+                                <a id="button" href="<?= base_url(); ?>/Irigasi/hapusDaerahIrigasi/<?= $value->id; ?>" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
                             </td>
                         </tr>
                     <?php
@@ -57,11 +52,10 @@
                     ?>
                 </tbody>
             </table>
-            <!-- </div>
-            </div> -->
         </div>
     </div>
 </div>
+
 
 
 <!-- Modal Upload -->
@@ -76,33 +70,16 @@
                 <form method="post" action="<?= base_url(); ?>/Irigasi/simpanDaerahIrigasi" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="form-floating my-3">
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="nama" autofocus required>
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="nama" required autofocus>
                         <label for="nama" class="form-label">Nama Daerah</label>
                     </div>
                     <div class="form-floating my-3">
-                        <input type="number" class="form-control" name="lebar_bawah" id="lebar_bawah" placeholder="lebar_bawah" required>
-                        <label for="lebar_bawah" class="form-label">Lebar Bawah Daerah Irigasi</label>
-                    </div>
-                    <div class="form-floating my-3">
-                        <input type="number" class="form-control" name="lebar_atas" id="lebar_atas" placeholder="lebar_atas" required>
-                        <label for="lebar_atas" class="form-label">Lebar Atas Daerah Irigasi</label>
-                    </div>
-                    <div class="form-floating my-3">
-                        <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="keterangan" required>
-                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <input type="number" class="form-control" name="luas" id="luas" placeholder="luas" required>
+                        <label for="luas" class="form-label">Luas</label>
                     </div>
                     <div class="form-floating my-3">
                         <input type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="kecamatan" required>
                         <label for="kecamatan" class="form-label">Kecamatan</label>
-                    </div>
-                    <div class="form-floating my-3">
-                        <select class="form-control" id="kondisi" name="kondisi" required>
-                            <option disabled>--Kondisi--</option>
-                            <?php foreach ($kategori as $value) { ?>
-                                <option value="<?= $value->kerusakan; ?>"><?= $value->kerusakan; ?></option>
-                            <?php } ?>
-                        </select>
-                        <label for="floatingSelect">---Kondisi---</label>
                     </div>
                     <div class="form my-3">
                         <label for="json" class="form-label">File json</label>
@@ -116,12 +93,13 @@
                         <label for="foto" class="form-label">Foto</label>
                         <input type="file" class="form-control" name="foto" id="foto" placeholder="foto" required>
                     </div>
-                    <button id="button" type="submit" class="btn btn-primary" value="Simpan"><i class="bi bi-upload"></i> Submit</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
 <?= $this->endSection('contentAdmin'); ?>

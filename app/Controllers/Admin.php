@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use App\Models\BerkasModel;
+use App\Models\BerkasJaringanModel;
 use App\Models\LaporanModel;
 use App\Models\LaporanDiterimaModel;
 use App\Models\BeritaModel;
@@ -13,6 +14,7 @@ use App\Models\KategoriModel;
 class Admin extends BaseController
 {
     protected $BerkasModel;
+    protected $BerkasJaringanModel;
     protected $LaporanModel;
     protected $LaporanDiterimaModel;
     protected $BeritaModel;
@@ -21,6 +23,7 @@ class Admin extends BaseController
     public function __construct()
     {
         $this->BerkasModel = new BerkasModel();
+        $this->BerkasJaringanModel = new BerkasJaringanModel();
         $this->LaporanModel = new LaporanModel();
         $this->LaporanDiterimaModel = new LaporanDiterimaModel();
         $this->BeritaModel = new BeritaModel();
@@ -41,15 +44,26 @@ class Admin extends BaseController
 
     //Menampilkan data irigasi, pada function ini memiliki hubungan dengan
     //Controller BerkasController
-    public function dataIrigasiAdmin()
+    public function dataDaerahIrigasiAdmin()
     {
         $berkas = $this->BerkasModel->findAll();
         $data = [
-            'title' => 'Data Irigasi Admin',
+            'title' => 'Data Daerah Irigasi Admin',
             'berkas' => $berkas
         ];
 
-        echo view('admin/dataIrigasiAdmin', $data);
+        echo view('admin/dataDaerahIrigasiAdmin', $data);
+    }
+
+    public function dataJaringanIrigasiAdmin()
+    {
+        $berkas = $this->BerkasJaringanModel->findAll();
+        $data = [
+            'title' => 'Data Jaringan Irigasi Admin',
+            'berkas' => $berkas
+        ];
+
+        echo view('admin/dataJaringanIrigasiAdmin', $data);
     }
 
     //menampilkan data laporan dari masyarakat

@@ -4,33 +4,20 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\BerkasModel;
+use App\Models\BerkasJaringanModel;
 
 class Berkas extends BaseController
 {
     protected $BerkasModel;
+    protected $BerkasJaringanModel;
 
     public function __construct()
     {
         $this->BerkasModel = new BerkasModel();
+        $this->BerkasJaringanModel = new BerkasJaringanModel();
     }
 
-    public function index()
-    {
-        $berkas = $this->BerkasModel->findAll();
-        $data = [
-            'title' => 'Data Irigasi Admin',
-            'berkas' => $berkas
-        ];
-        echo view('admin/dataIrigasiAdmin', $data);
-    }
-
-    public function create()
-    {
-        $data = [
-            'title' => 'Dinas PUPR Kabupaten Aceh Barat Daya'
-        ];
-        echo view('admin/form_upload', $data);
-    }
+    //UNTUK BERKAS DAERAH IRIGASI
 
     public function save()
     {
@@ -62,25 +49,15 @@ class Berkas extends BaseController
         ]);
         $dataBerkas->move('uploads/berkas/', $fileName);
         session()->setFlashdata('success', 'Berkas Berhasil diupload');
-        return redirect()->to(base_url('Berkas/index'));
+        return redirect()->to(base_url('Admin/dataDaerahIrigasiAdmin'));
     }
-
-    // public function dataIrigasi()
-    // {
-    //     $berkas = new BerkasModel();
-    //     $data['berkas'] = [
-    //         'title' => 'Data Irigasi | Dinas PUPR Kabupaten Aceh Barat Daya',
-    //         $berkas->findAll()
-    //     ];
-    //     echo view('pages/dataIrigasi', $data);
-    // }
 
     public function delete($id = null)
     {
         $berkas = $this->BerkasModel;
         $berkas->delete($id);
         session()->setFlashdata('success', 'Berkas Berhasil dihapus');
-        return redirect()->to('/Berkas');
+        return redirect()->to('Admin/dataDaerahIrigasiAdmin');
     }
 
     public function download($id)
@@ -132,16 +109,101 @@ class Berkas extends BaseController
         ]);
         $dataBerkas->move('uploads/berkas/', $fileName);
         session()->setFlashdata('success', 'Update Data Irigasi Berhasil');
-        return redirect()->to('/Berkas');
+        return redirect()->to('Admin/dataDaerahIrigasiAdmin');
+    }
 
+    //UNTUK BERKAS JARINGAN IRIGASI
 
-        // cara lain
+    public function saveJaringan()
+    {
+        if (!$this->validate([
+            'nama_daerah' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Tidak boleh kosong'
+                ]
+            ],
+            //note : masih belum tau cara validasi buat file yang ekstensi nya pdf
+            'pdf' => [
+                'rules' => 'uploaded[pdf]',
+                'errors' => [
+                    'uploaded' => 'Harus Ada File yang diupload',
+                ]
 
-        // $this->BerkasModel->update($id, [
-        //     'namaDaerah' => $this->request->getPost('namaDaerah'),
-        //     'pdf' => $this->request->getVar('pdf')
-        // ]);
+            ]
+        ])) {
+            session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back()->withInput();
+        }
+        $berkas = $this->BerkasJaringanModel;
+        $dataBerkas = $this->request->getFile('pdf');
+        $fileName = $dataBerkas->getRandomName();
+        $berkas->insert([
+            'pdf' => $fileName,
+            'nama_daerah' => $this->request->getVar('nama_daerah')
+        ]);
+        $dataBerkas->move('uploads/berkas/', $fileName);
+        session()->setFlashdata('success', 'Berkas Berhasil diupload');
+        return redirect()->to(base_url('Admin/dataJaringanIrigasiAdmin'));
+    }
 
-        // return redirect('berkas')->with('success', 'Data Berhasil di Update');
+    public function deleteJaringan($id_berkas = null)
+    {
+        $berkas = $this->BerkasJaringanModel;
+        $berkas->delete($id_berkas);
+        session()->setFlashdata('success', 'Berkas Berhasil dihapus');
+        return redirect()->to('Admin/dataJaringanIrigasiAdmin');
+    }
+
+    public function downloadJaringan($id_berkas)
+    {
+        $berkas = $this->BerkasJaringanModel;
+        $data = $berkas->find($id_berkas);
+        return $this->response->download('uploads/berkas/' . $data->pdf, null);
+    }
+
+    public function updateJaringan($id_berkas)
+    {
+        $berkas = $this->BerkasJaringanModel->find($id_berkas);
+
+        if (empty($berkas)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Data daerah irigasi tidak ditemukan !!');
+        }
+        $data = [
+            'title' => 'Update',
+            'berkas' => $berkas
+        ];
+        return view('admin/form_updateJaringan', $data);
+    }
+
+    public function updateDataJaringan($id_berkas)
+    {
+        if (!$this->validate([
+            'nama_daerah' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama daerah harus diisi'
+                ]
+            ],
+            'pdf' => [
+                'rules' => 'uploaded[pdf]',
+                'errors' => [
+                    'uploaded' => 'Harus ada file yang di upload'
+                ]
+            ]
+        ])) {
+            session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back();
+        }
+        $berkas = $this->BerkasJaringanModel;
+        $dataBerkas = $this->request->getFile('pdf');
+        $fileName = $dataBerkas->getRandomName();
+        $berkas->update($id_berkas, [
+            'nama_daerah' => $this->request->getVar('nama_daerah'),
+            'pdf' => $fileName
+        ]);
+        $dataBerkas->move('uploads/berkas/', $fileName);
+        session()->setFlashdata('success', 'Update Data Irigasi Berhasil');
+        return redirect()->to('Admin/dataJaringanIrigasiAdmin');
     }
 }

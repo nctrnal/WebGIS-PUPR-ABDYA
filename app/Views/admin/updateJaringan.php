@@ -29,15 +29,6 @@
                             <input type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="kecamatan" value="<?= $irigasi->kecamatan; ?>" required>
                             <label for="kecamatan" class="form-label">Kecamatan</label>
                         </div>
-                        <div class="form-floating my-3">
-                            <select class="form-control" id="kondisi" name="kondisi" required>
-                                <option disabled>--Kondisi--</option>
-                                <?php foreach ($kategori as $value) { ?>
-                                    <option value="<?= $value->kerusakan; ?>"><?= $value->kerusakan; ?></option>
-                                <?php } ?>
-                            </select>
-                            <label for="floatingSelect">---Kondisi---</label>
-                        </div>
                         <div class="form my-3">
                             <label for="json" class="form-label">File json</label>
                             <input type="file" class="form-control" name="json" id="json" placeholder="json" value="<?= $irigasi->json; ?>" required>

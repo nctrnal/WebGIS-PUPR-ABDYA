@@ -19,23 +19,11 @@ class DaerahIrigasi extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
-            'lebar_bawah'       => [
+            'luas'       => [
                 'type'           => 'INT',
                 'constraint'     => 11,
-            ],
-            'lebar_atas'       => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-            ],
-            'keterangan'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255',
             ],
             'kecamatan'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255',
-            ],
-            'kondisi'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],

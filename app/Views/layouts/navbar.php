@@ -24,7 +24,10 @@
                     <a class="nav-link <?php if ($title == 'Pelaporan') : ?> active <?php endif; ?>" href="/pages/pelaporan">Pelaporan</a>
                 </li>
                 <li class="nav-item" id="nav-id">
-                    <a class="nav-link <?php if ($title == 'Data Irigasi') : ?> active <?php endif; ?>" href="/pages/dataIrigasi">Data</a>
+                    <a class="nav-link <?php if ($title == 'Data Irigasi') : ?> active <?php endif; ?>" href="/pages/dataDaerahIrigasi">Berkas Daerah Irigasi</a>
+                </li>
+                <li class="nav-item" id="nav-id">
+                    <a class="nav-link <?php if ($title == 'Data Irigasi') : ?> active <?php endif; ?>" href="/pages/dataJaringanIrigasi">Berkas Jaringan Irigasi</a>
                 </li>
             </ul>
             <ul class="navbar-nav nav-login">
