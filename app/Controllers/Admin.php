@@ -9,6 +9,7 @@ use App\Models\LaporanModel;
 use App\Models\LaporanDiterimaModel;
 use App\Models\BeritaModel;
 use App\Models\KategoriModel;
+// use App\Models\LoginModel;
 
 
 class Admin extends BaseController
@@ -19,6 +20,7 @@ class Admin extends BaseController
     protected $LaporanDiterimaModel;
     protected $BeritaModel;
     protected $KategoriModel;
+    // protected $LoginModel;
 
     public function __construct()
     {
@@ -28,6 +30,7 @@ class Admin extends BaseController
         $this->LaporanDiterimaModel = new LaporanDiterimaModel();
         $this->BeritaModel = new BeritaModel();
         $this->KategoriModel = new KategoriModel();
+        // $this->LoginModel = new LoginModel();
     }
 
     public function index()
@@ -48,7 +51,7 @@ class Admin extends BaseController
     {
         $berkas = $this->BerkasModel->findAll();
         $data = [
-            'title' => 'Data Daerah Irigasi Admin',
+            'title' => 'Berkas Daerah Irigasi',
             'berkas' => $berkas
         ];
 
@@ -59,7 +62,7 @@ class Admin extends BaseController
     {
         $berkas = $this->BerkasJaringanModel->findAll();
         $data = [
-            'title' => 'Data Jaringan Irigasi Admin',
+            'title' => 'Berkas Jaringan Irigasi',
             'berkas' => $berkas
         ];
 
@@ -93,6 +96,12 @@ class Admin extends BaseController
                     'required' => '{field} Tidak boleh kosong'
                 ]
             ],
+            'pelapor' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Tidak boleh kosong'
+                ]
+            ],
             'lokasi' => [
                 'rules' => 'required',
                 'errors' => [
@@ -100,6 +109,12 @@ class Admin extends BaseController
                 ]
             ],
             'deskripsi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Tidak boleh kosong'
+                ]
+            ],
+            'koordinat' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Tidak boleh kosong'
@@ -126,8 +141,10 @@ class Admin extends BaseController
         $fileName = $dataLaporan->getRandomName();
         $laporan->insert([
             'nama_pelapor' => $this->request->getVar('nama_pelapor'),
+            'pelapor' => $this->request->getVar('pelapor'),
             'lokasi' => $this->request->getVar('lokasi'),
             'deskripsi' => $this->request->getVar('deskripsi'),
+            'koordinat' => $this->request->getVar('koordinat'),
             'bukti' => $fileName
         ]);
         //$dataLaporan merupakan nama file yang sudah diacak untuk menghidari
@@ -173,6 +190,12 @@ class Admin extends BaseController
                         'required' => '{field} Tidak boleh kosong'
                     ]
                 ],
+                'pelapor' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak boleh kosong'
+                    ]
+                ],
                 'lokasi' => [
                     'rules' => 'required',
                     'errors' => [
@@ -186,6 +209,12 @@ class Admin extends BaseController
                     ]
                 ],
                 'deskripsi' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak boleh kosong'
+                    ]
+                ],
+                'koordinat' => [
                     'rules' => 'required',
                     'errors' => [
                         'required' => '{field} Tidak boleh kosong'
@@ -208,9 +237,11 @@ class Admin extends BaseController
         $laporan = $this->LaporanDiterimaModel;
         $laporan->insert([
             'nama_pelapor' => $this->request->getVar('nama_pelapor'),
+            'pelapor' => $this->request->getVar('pelapor'),
             'lokasi' => $this->request->getVar('lokasi'),
             'jenis_kerusakan' => $this->request->getVar('jenis_kerusakan'),
             'deskripsi' => $this->request->getVar('deskripsi'),
+            'koordinat' => $this->request->getVar('koordinat'),
             'bukti' => $this->request->getVar('bukti')
         ]);
 
@@ -246,7 +277,7 @@ class Admin extends BaseController
     public function berita()
     {
         $data = [
-            'title' => 'Berita',
+            'title' => 'Beranda',
             'kategori' => $this->KategoriModel->findAll(),
             'berita' => $this->BeritaModel
         ];
@@ -315,7 +346,7 @@ class Admin extends BaseController
     public function detailBerita($id_berita)
     {
         $data = [
-            'title' => 'Pelaporan',
+            'title' => 'Beranda',
             'laporan' => $this->BeritaModel->find($id_berita)
         ];
         return view('admin/detailLaporan', $data);
@@ -325,7 +356,7 @@ class Admin extends BaseController
     {
         $berita = $this->BeritaModel->find($id_berita);
         $data = [
-            'title' => 'Update Berita',
+            'title' => 'Beranda',
             'berita' => $berita,
             'kategori' => $this->KategoriModel->findAll()
         ];
@@ -397,4 +428,47 @@ class Admin extends BaseController
         session()->setFlashdata('success', 'Berita berhasil dihapus');
         return redirect()->to('/Admin');
     }
+
+    // Public function masuk()
+    // {
+    //     echo view('pages/v_login');
+    // }
+
+    // public function regis()
+    // {
+    //     if (!$this->validate([
+    //         'username' => [
+    //             'rules' => 'required|min_length[4]|max_length[20]|is_unique[users.username]',
+    //             'errors' => [
+    //                 'required' => '{field} Harus diisi',
+    //                 'min_length' => '{field} Minimal 4 Karakter',
+    //                 'max_length' => '{field} Maksimal 20 Karakter',
+    //                 'is_unique' => 'Username sudah digunakan sebelumnya'
+    //             ]
+    //         ],
+    //         'password' => [
+    //             'rules' => 'required|min_length[4]|max_length[50]',
+    //             'errors' => [
+    //                 'required' => '{field} Harus diisi',
+    //                 'min_length' => '{field} Minimal 4 Karakter',
+    //                 'max_length' => '{field} Maksimal 50 Karakter',
+    //             ]
+    //         ],
+    //         'password_conf' => [
+    //             'rules' => 'matches[password]',
+    //             'errors' => [
+    //                 'matches' => 'Konfirmasi Password tidak sesuai dengan password',
+    //             ]
+    //         ],
+    //     ])) {
+    //         session()->setFlashdata('error', $this->validator->listErrors());
+    //         return redirect()->back()->withInput();
+    //     }
+    //     $users = new LoginModel();
+    //     $users->insert([
+    //         'username' => $this->request->getVar('username'),
+    //         'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT)
+    //     ]);
+    //     return redirect()->to('pages/v_login');
+    // }
 }

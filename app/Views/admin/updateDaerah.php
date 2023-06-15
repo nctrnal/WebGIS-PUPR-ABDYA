@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <h2 class="judul-data">Update Jaringan Irigasi</h2>
+        <h2 class="judul-data">Update Daerah Irigasi</h2>
         <div class="col">
             <div class="card my-3">
                 <div class="card-body width: 100px">
@@ -36,10 +36,6 @@
                         <div class="form-floating my-3">
                             <input type="color" class="form-control" name="warna" id="warna" placeholder="warna" required>
                             <label for="warna" class="form-label">Warna Layer</label>
-                        </div>
-                        <div class="form my-3">
-                            <label for="foto" class="form-label">Foto</label>
-                            <input type="file" class="form-control" name="foto" id="foto" placeholder="foto" value="<?= $daerah->foto; ?>" required>
                         </div>
                         <button id="button" type="submit" class="btn btn-primary"><i class="bi bi-upload"></i> Submit</button>
                     </form>

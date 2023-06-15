@@ -5,14 +5,14 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 class="my-3">DATA</h2>
+            <h2 class="my-3">Berkas Jaringan Irigasi</h2>
             <?php if (!empty(session()->getFlashdata('success'))) : ?>
                 <div class="alert alert-success" role="alert">
                     <?php echo session()->getFlashdata('success'); ?>
                 </div>
             <?php endif; ?>
             <button id="button" type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#tambahDataJaringan">
-                <i class="bi bi-plus-square"></i> Tambah Data
+                <i class="bi bi-plus-square"></i> Tambah Berkas
             </button> <br>
             <input type="text" class="cd-search table-filter" data-table="table" placeholder="Cari" />
             <table class="table table-bordered table-striped">
@@ -32,8 +32,8 @@
                             <th><?= $no++; ?></th>
                             <td> <?= $value->nama_daerah; ?> </td>
                             <td>
-                                <a href="<?= base_url(); ?>Berkas/updateJaringan/<?= $value->id_berkas; ?>" class="btn btn-success mx-1px">Update</a>
-                                <a href="<?= base_url(); ?>Berkas/deleteJaringan/<?= $value->id_berkas; ?>" class="btn btn-danger mx-1px">Delete</a>
+                                <a href="<?= base_url(); ?>Berkas/updateJaringan/<?= $value->id_berkas; ?>" class="btn btn-success mx-1px"><i class="bi bi-pencil-square"></i> Update</a>
+                                <a href="<?= base_url(); ?>Berkas/deleteJaringan/<?= $value->id_berkas; ?>" class="btn btn-danger mx-1px"><i class="bi bi-trash"></i> Delete</a>
                             </td>
                         </tr>
                     <?php

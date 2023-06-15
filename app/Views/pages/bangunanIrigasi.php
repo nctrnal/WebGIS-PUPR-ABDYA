@@ -31,15 +31,31 @@
 
             geoLayer.eachLayer(function(layer) {
                 layer.bindPopup("Nama : <?= $value->nama; ?><br>" +
-                    "Lebar Bawah : <?= $value->lebar_bawah; ?><br>" +
-                    "Lebar Atas : <?= $value->lebar_atas; ?><br>" +
+                    "Lebar Bawah : <?= $value->lebar_bawah; ?> cm <br>" +
+                    "Lebar Atas : <?= $value->lebar_atas; ?> cm <br>" +
                     "Keterangan : <?= $value->keterangan; ?><br>" +
                     "Kecamatan : <?= $value->kecamatan; ?><br>" +
-                    "Kondisi : <?= $value->kondisi; ?><br>" +
-                    "<img id='fotoPeta' src='<?= base_url('uploads/fotoIrigasi/bangunanIrigasi/' . $value->foto); ?>' >");
+                    "Kondisi : <?= $value->kondisi; ?><br>");
             });
         });
     <?php } ?>
+
+    var legend = L.control({
+        position: "topright"
+    });
+
+    legend.onAdd = function(map) {
+        var div = L.DomUtil.create("div", "legend");
+        div.innerHTML += "<h4>Tegnforklaring</h4>";
+        div.innerHTML += '<i style="background: #477AC2"></i><span>Water</span><br>';
+        div.innerHTML += '<i style="background: #448D40"></i><span>Forest</span><br>';
+        div.innerHTML += '<i style="background: #E6E696"></i><span>Land</span><br>';
+        div.innerHTML += '<i style="background: #E8E6E0"></i><span>Residential</span><br>';
+        div.innerHTML += '<i style="background: #FFFFFF"></i><span>Ice</span><br>';
+        div.innerHTML += '<i class="icon" style="background-image: url(https://d30y9cdsu7xlg0.cloudfront.net/png/194515-200.png);background-repeat: no-repeat;"></i><span>Grænse</span><br>';
+        return div;
+    };
+    legend.addTo(map);
 </script>
 
 <?= $this->endSection('content'); ?>

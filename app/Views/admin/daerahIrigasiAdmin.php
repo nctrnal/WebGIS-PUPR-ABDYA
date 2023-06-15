@@ -2,7 +2,7 @@
 
 <?= $this->section('contentAdmin'); ?>
 <div class="container">
-    <h2 class="mt-3">DATA DAERAH IRIGASI</h2>
+    <h2 class="mt-3">Data Daerah Irigasi</h2>
     <div class="col">
         <button id="button" type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#tambahDaerah">
             <i class="bi bi-plus-square"></i> Tambah Data
@@ -43,7 +43,7 @@
                             <td><?= $value->luas; ?> </td>
                             <td><?= $value->kecamatan; ?> </td>
                             <td>
-                                <a id="button" href="<?= base_url(); ?>/Irigasi/ubahDaerahIrigasi/<?= $value->id; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Detail</a>
+                                <a id="button" href="<?= base_url(); ?>/Irigasi/ubahDaerahIrigasi/<?= $value->id; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Update</a>
                                 <a id="button" href="<?= base_url(); ?>/Irigasi/hapusDaerahIrigasi/<?= $value->id; ?>" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
                             </td>
                         </tr>
@@ -88,10 +88,6 @@
                     <div class="form-floating my-3">
                         <input type="color" class="form-control" name="warna" id="warna" placeholder="warna" required>
                         <label for="warna" class="form-label">Warna Layer</label>
-                    </div>
-                    <div class="form my-3">
-                        <label for="foto" class="form-label">Foto</label>
-                        <input type="file" class="form-control" name="foto" id="foto" placeholder="foto" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

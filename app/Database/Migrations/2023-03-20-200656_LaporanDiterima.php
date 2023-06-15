@@ -19,6 +19,10 @@ class LaporanDiterima extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
+            'pelapor'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255',
+            ],
             'lokasi'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
@@ -28,6 +32,10 @@ class LaporanDiterima extends Migration
                 'constraint'     => '255',
             ],
             'deskripsi'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '1000',
+            ],
+            'koordinat'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '1000',
             ],

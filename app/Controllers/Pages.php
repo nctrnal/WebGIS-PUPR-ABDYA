@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Database\Migrations\Kategori;
 use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use App\Models\BerkasModel;
 use App\Models\BerkasJaringanModel;
@@ -41,7 +42,8 @@ class Pages extends BaseController
         $data = [
             'title' => 'Beranda',
             'berita' => $this->BeritaModel->orderBy("created_at", "desc")->first(),
-            'berita1' => $this->BeritaModel->findAll(),
+            'berita1' => $this->BeritaModel->paginate(6, 'berita1'),
+            'pager' => $this->BeritaModel->pager
         ];
         return view('pages/home', $data);
         // dd($data);
@@ -50,7 +52,7 @@ class Pages extends BaseController
     public function berita($id_berita)
     {
         $data = [
-            'title' => 'Berita',
+            'title' => 'Beranda',
             'detail' => $this->BeritaModel->find($id_berita)
         ];
 
@@ -60,7 +62,7 @@ class Pages extends BaseController
     public function jaringanIrigasi()
     {
         $data = [
-            'title' => 'Jaringan Irigasi',
+            'title' => 'Peta Irigasi',
             'jaringan' => $this->JaringanIrigasiModel->getAllJaringan()
         ];
         return view('pages/jaringanIrigasi', $data);
@@ -69,7 +71,7 @@ class Pages extends BaseController
     public function daerahIrigasi()
     {
         $data = [
-            'title' => 'Daerah Irigasi',
+            'title' => 'Peta Irigasi',
             'daerah' => $this->DaerahIrigasiModel->findAll()
         ];
         echo view('pages/daerahIrigasi', $data);
@@ -78,17 +80,18 @@ class Pages extends BaseController
     public function bangunanIrigasi()
     {
         $data = [
-            'title' => 'Bangunan Irigasi',
+            'title' => 'Peta Irigasi',
             'bangunan' => $this->BangunanIrigasiModel->findAll()
         ];
         echo view('pages/bangunanIrigasi', $data);
     }
 
+    // Berkas Daerah Irigasi
     public function dataDaerahIrigasi()
     {
         $berkas = $this->BerkasModel->findAll();
         $data = [
-            'title' => 'Data Irigasi',
+            'title' => 'Berkas',
             'berkas' => $berkas
         ];
 
@@ -96,22 +99,23 @@ class Pages extends BaseController
         // dd($data);
     }
 
-    public function detail($id)
-    {
-        $berkas = $this->BerkasModel;
-        $data = [
-            'title' => 'Data Irigasi',
-            'berkas' => $berkas->find($id)
-        ];
+    // public function detail($id)
+    // {
+    //     $berkas = $this->BerkasModel;
+    //     $data = [
+    //         'title' => 'Berkas',
+    //         'berkas' => $berkas->find($id)
+    //     ];
 
-        echo view('pages/detail', $data);
-    }
+    //     echo view('pages/detail', $data);
+    // }
 
+    // Berkas Jaringan Irigasi
     public function dataJaringanIrigasi()
     {
         $berkas = $this->BerkasJaringanModel->findAll();
         $data = [
-            'title' => 'Data Irigasi',
+            'title' => 'Berkas',
             'berkas' => $berkas
         ];
 
@@ -119,14 +123,55 @@ class Pages extends BaseController
         // dd($data);
     }
 
+    //Geojson
+    public function dataGeojsonJaringan()
+    {
+        $irigasi = $this->JaringanIrigasiModel->findAll();
+        $data = [
+            'title' => 'Geojson',
+            'jaringan' => $irigasi
+        ];
+
+        echo view('pages/dataGeojsonJaringan', $data);
+        // dd($data);
+    }
+    public function dataGeojsonDaerah()
+    {
+        $irigasi = $this->DaerahIrigasiModel->findAll();
+        $data = [
+            'title' => 'Geojson',
+            'daerah' => $irigasi
+        ];
+
+        echo view('pages/dataGeojsonDaerah', $data);
+        // dd($data);
+    }
+    public function dataGeojsonBangunan()
+    {
+        $irigasi = $this->BangunanIrigasiModel->findAll();
+        $data = [
+            'title' => 'Geojson',
+            'bangunan' => $irigasi
+        ];
+
+        echo view('pages/dataGeojsonBangunan', $data);
+        // dd($data);
+    }
+
+    public function panduan()
+    {
+        $data = [
+            'title' => 'Panduan',
+        ];
+
+        echo view('pages/panduan', $data);
+    }
+
     public function pelaporan()
     {
-        $kategori = $this->KategoriModel->getAllKategori();
         $data = [
-            'title' => 'Pelaporan',
-            'kategori' => $kategori
+            'title' => 'Pelaporan'
         ];
         echo view('pages/pelaporan', $data);
-        // dd($data);
     }
 }

@@ -24,8 +24,10 @@
                             <th><?= $no++; ?></th>
                             <td><?= $value->namaDaerah; ?></td>
                             <td>
-                                <a href="<?= base_url(); ?>/Pages/detail/<?= $value->id; ?>" class="btn btn-success"><i class="bi bi-arrow-up-right"></i> Detail</a>
-                                <a href="<?= base_url(); ?>/Berkas/download/<?= $value->id; ?>" class="btn btn-primary"><i class="bi bi-download"></i> Download</a>
+                                <a href="<?= base_url(); ?>/Berkas/viewDaerah/<?= $value->id; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Detail
+                                </a>
+                                <a href="<?= base_url(); ?>/Berkas/download/<?= $value->id; ?>" class="btn btn-primary"><i class="bi bi-download"></i> Download
+                                </a>
                             </td>
                         </tr>
                     <?php

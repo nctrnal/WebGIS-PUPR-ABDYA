@@ -1,0 +1,4 @@
+{"type":"FeatureCollection", "features":[
+{"type":"Feature","geometry":{"type":"Point","coordinates":[96.91923937831231,3.6549244183581964,0]},"properties":{"No":"30","Nama_dan_D":"DI TANGAN-TANGAN","No_GPS":214,"Lebar_Bawa":0,"Lebar_Atas":0,"Tinggi_Sal":0,"No_Foto":"214","Keterangan":"Box Bagi","Kecamatan":"Tangan-Tangan","Kondisi":"Rusak Berat"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[96.77181295823839,3.8168372471011045,0]},"properties":{"No":"9","Nama_dan_D":"DI. PANTO CUT","No_GPS":214,"Lebar_Bawa":0,"Lebar_Atas":0,"Tinggi_Sal":0,"No_Foto":null,"Keterangan":"Jembatan","Kecamatan":"Kuala Batee","Kondisi":"Rusak Ringan"}}
+]}

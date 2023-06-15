@@ -2,7 +2,7 @@
 
 <?= $this->section('contentAdmin'); ?>
 <div class="container">
-    <h2 class="mt-3">DATA JARINGAN IRIGASI</h2>
+    <h2 class="mt-3">Data Jaringan Irigasi</h2>
     <div class="col">
         <button id="button" type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#tambahJaringan">
             <i class="bi bi-plus-square"></i> Tambah Data
@@ -28,7 +28,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Nama Daerah</th>
                         <th scope="col">Panjang Jaringan (meter)</th>
-                        <th scope="col">Kondisi</th>
+                        <th scope="col">Kecamatan</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -43,7 +43,7 @@
                             <td><?= $value->panjang; ?></td>
                             <td><?= $value->kecamatan; ?></td>
                             <td>
-                                <a href="<?= base_url(); ?>/Irigasi/ubahJaringanIrigasi/<?= $value->id; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Detail</a>
+                                <a href="<?= base_url(); ?>/Irigasi/ubahJaringanIrigasi/<?= $value->id; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Update</a>
                                 <a href="<?= base_url(); ?>/Irigasi/hapusJaringanIrigasi/<?= $value->id; ?>" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
                             </td>
                         </tr>

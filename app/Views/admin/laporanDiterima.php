@@ -7,25 +7,26 @@
         <div class="col">
             <h2 class="my-3">Daftar Laporan Diterima</h2>
             <a id="button" class="btn btn-primary mb-3" href="/Admin/lihatLaporan">
-                <i class="bi bi-journal-text"> Laporan Diterima</i>
-            </a>
+                <i class="bi bi-journal-text"></i> Laporan Diterima
+            </a><br>
             <?php if (!empty(session()->getFlashdata('success'))) : ?>
                 <div class="alert alert-success" role="alert">
                     <?php echo session()->getFlashdata('success'); ?>
                 </div>
-            <?php endif; ?>
+                <?php endif; ?>
             <input type="text" class="cd-search table-filter" data-table="table" placeholder="Cari" />
             <table class="table table-bordered table-striped">
                 <thead class="bg-secondary">
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Nama Pelpaor</th>
+                        <th scope="col">Nama Pelapor</th>
+                        <th scope="col">Pelapor</th>
                         <th scope="col">Lokasi</th>
                         <th scope="col">Kerusakan</th>
                         <th scope="col">Deskripsi</th>
                         <th scope="col">Bukti</th>
                         <th scope="col">Tanggal Laporan</th>
-                        <th scope="col">Status</th>
+                        <th scope="col" style="width: 130px;">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,7 @@
                         <tr>
                             <th><?= $no++; ?></th>
                             <td><?= $value->nama_pelapor; ?> </td>
+                            <td><?= $value->pelapor; ?> </td>
                             <td><?= $value->lokasi; ?> </td>
                             <td><?= $value->jenis_kerusakan; ?> </td>
                             <td><?= $value->deskripsi; ?> </td>

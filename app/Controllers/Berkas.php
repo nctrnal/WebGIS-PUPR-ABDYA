@@ -5,19 +5,41 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\BerkasModel;
 use App\Models\BerkasJaringanModel;
+use App\Models\JaringanIrigasiModel;
+use App\Models\DaerahIrigasiModel;
+use App\Models\BangunanIrigasiModel;
+use Dompdf\Dompdf;
 
 class Berkas extends BaseController
 {
     protected $BerkasModel;
     protected $BerkasJaringanModel;
+    protected $JaringanIrigasiModel;
+    protected $DaerahIrigasiModel;
+    protected $BangunanIrigasiModel;
 
     public function __construct()
     {
         $this->BerkasModel = new BerkasModel();
         $this->BerkasJaringanModel = new BerkasJaringanModel();
+        $this->JaringanIrigasiModel = new JaringanIrigasiModel();
+        $this->DaerahIrigasiModel = new DaerahIrigasiModel();
+        $this->BangunanIrigasiModel = new BangunanIrigasiModel();
+
     }
 
+
     //UNTUK BERKAS DAERAH IRIGASI
+
+    public function viewDaerah($id)
+    {
+        $data = [
+            'title' => 'Berita',
+            'daerah' => $this->BerkasModel->find($id)
+        ];
+
+        return view('pages/viewDaerah', $data);
+    }
 
     public function save()
     {
@@ -75,7 +97,7 @@ class Berkas extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Data daerah irigasi tidak ditemukan !!');
         }
         $data = [
-            'title' => 'Update',
+            'title' => 'Berkas Daerah Irigasi',
             'berkas' => $berkas
         ];
         return view('admin/form_update', $data);
@@ -113,6 +135,16 @@ class Berkas extends BaseController
     }
 
     //UNTUK BERKAS JARINGAN IRIGASI
+
+    public function viewJaringan($id_berkas)
+    {
+        $data = [
+            'title' => 'Berkas Jaringan Irigasi',
+            'jaringan' => $this->BerkasJaringanModel->find($id_berkas)
+        ];
+
+        return view('pages/viewJaringan', $data);
+    }
 
     public function saveJaringan()
     {
@@ -170,7 +202,7 @@ class Berkas extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Data daerah irigasi tidak ditemukan !!');
         }
         $data = [
-            'title' => 'Update',
+            'title' => 'Berkas Jaringan Irigasi',
             'berkas' => $berkas
         ];
         return view('admin/form_updateJaringan', $data);
@@ -206,4 +238,27 @@ class Berkas extends BaseController
         session()->setFlashdata('success', 'Update Data Irigasi Berhasil');
         return redirect()->to('Admin/dataJaringanIrigasiAdmin');
     }
+
+    // Download Geojson
+    public function downloadJaringanGeojson($id)
+    {
+        $jaringan = $this->JaringanIrigasiModel;
+        $data = $jaringan->find($id);
+        // dd($data);
+        return $this->response->download('geojson/jaringanIrigasi/' . $data->json, null);
+    }
+    public function downloadBangunanGeojson($id)
+    {
+        $bangunan = $this->BangunanIrigasiModel;
+        $data = $bangunan->find($id);
+        return $this->response->download('geojson/bangunanIrigasi/' . $data->json, null);
+    }
+    public function downloadDaerahGeojson($id)
+    {
+        $daerah = $this->DaerahIrigasiModel;
+        $data = $daerah->find($id);
+        return $this->response->download('geojson/daerahIrigasi/' . $data->json, null);
+    }
+
+
 }

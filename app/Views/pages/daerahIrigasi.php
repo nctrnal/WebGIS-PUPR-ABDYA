@@ -29,9 +29,8 @@
 
             geoLayer.eachLayer(function(layer) {
                 layer.bindPopup("Nama : <?= $value->nama; ?><br>" +
-                    "Luas : <?= $value->luas; ?><br>" +
-                    "Kecamatan : <?= $value->kecamatan; ?><br>" +
-                    "<img src='<?= base_url('uploads/fotoIrigasi/daerahIrigasi/' . $value->foto); ?>'>");
+                    "Luas : <?= $value->luas; ?> Hektar <br>" +
+                    "Kecamatan : <?= $value->kecamatan; ?><br>");
             });
         });
     <?php } ?>

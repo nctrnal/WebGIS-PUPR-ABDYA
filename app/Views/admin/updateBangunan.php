@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <h2 class="judul-data">Update Daerah Irigasi</h2>
+        <h2 class="judul-data">Update Bangunan Irigasi</h2>
         <div class="col">
             <div class="card my-3">
                 <div class="card-body width: 100px">
@@ -48,15 +48,23 @@
                         </div>
                         <div class="form my-3">
                             <label for="json" class="form-label">File json</label>
-                            <input type="file" class="form-control" name="json" id="json" placeholder="json" value="<?= $daerah->json; ?>" required>
+                            <input type="file" class="form-control" name="json" id="json" placeholder="json">
                         </div>
                         <div class="form-floating my-3">
-                            <input type="color" class="form-control" name="warna" id="warna" placeholder="warna" required>
-                            <label for="warna" class="form-label">Warna Layer</label>
-                        </div>
-                        <div class="form my-3">
-                            <label for="foto" class="form-label">Foto</label>
-                            <input type="file" class="form-control" name="foto" id="foto" placeholder="foto" value="<?= $daerah->foto; ?>" required>
+                            <select class="form-control" id="warna" name="warna" required>
+                                <option value="#dc143c" selected>(Bendungan) Merah</option>
+                                <option value="#efef10">(Jembatan) Kuning</option>
+                                <option value="#27ef10">(Bangunan Bagi) Hijau</option>
+                                <option value="#10efef">(Gorong-Gorong) Biru</option>
+                                <option value="#e010ef">(Intake) Ungu</option>
+                                <option value="#000000">(Sedimentasi) Hitam</option>
+                                <option value="#473a07">(Box Bagi) Coklat</option>
+                                <option value="#070747">(Primer) Biru Tua</option>
+                                <option value="#7b7c7c">(Pintu Penguras) Abu-Abu</option>
+                                <option value="#ffffff">(lining) Putih</option>
+                                <option value="#ea93bf">(Lantai) Merah Muda</option>
+                            </select>
+                            <label for="floatingSelect">---Pilih Identitas Pelapor---</label>
                         </div>
                         <button id="button" type="submit" class="btn btn-primary"><i class="bi bi-upload"></i> Submit</button>
                     </form>

@@ -22,9 +22,15 @@
                             <label for="nama_pelapor" class="form-label">Nama Pelapor</label>
                         </div>
                         <div class="form-floating my-3">
+                            <input type="text" class="form-control" name="pelapor" id="pelapor" placeholder="nama" value="<?= $laporan->pelapor; ?>" readonly>
+                            <label for="pelapor" class="form-label">Pelapor</label>
+                        </div>
+                        <div class="form-floating my-3">
                             <input type="text" class="form-control" name="lokasi" id="lokasi" placeholder="lokasi" value="<?= $laporan->lokasi; ?>" readonly>
                             <label for="lokasi" class="form-label">Lokasi</label>
                         </div>
+                        <br>
+                        <i style="color: red;">*Silahkan tentukan jenis kerusakan berdasarkan bukti yang dikirimkan pelapor</i>
                         <div class="form-floating my-3">
                             <select class="form-control" id="jenis_kerusakan" name="jenis_kerusakan" required>
                                 <?php foreach ($kategori as $value) { ?>

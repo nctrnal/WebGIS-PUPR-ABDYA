@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+                    <?php 
                     $no = 1;
                     foreach ($berkas as $value) {
                     ?>
@@ -24,8 +24,10 @@
                             <th><?= $no++; ?></th>
                             <td><?= $value->nama_daerah; ?></td>
                             <td>
-                                <a href="<?= base_url(); ?>/Pages/detail/<?= $value->id_berkas; ?>" class="btn btn-success"><i class="bi bi-arrow-up-right"></i> Detail</a>
-                                <a href="<?= base_url(); ?>/Berkas/download/<?= $value->id_berkas; ?>" class="btn btn-primary"><i class="bi bi-download"></i> Download</a>
+                                <a href="<?= base_url(); ?>/Berkas/viewJaringan/<?= $value->id_berkas; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Detail
+                                </a>
+                                <a href="<?= base_url(); ?>/Berkas/downloadJaringan/<?= $value->id_berkas; ?>" class="btn btn-primary"><i class="bi bi-download"></i> Download
+                                </a>
                             </td>
                         </tr>
                     <?php
