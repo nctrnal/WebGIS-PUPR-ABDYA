@@ -17,7 +17,7 @@
         geoLayer = L.geoJson(data, {
             style: function(feature) {
                 return {
-                    opacity: 1.0,
+                    opacity: 0.5,
                     color: '<?= $b->warna; ?>',
                 }
             },
