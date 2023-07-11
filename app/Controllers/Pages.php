@@ -81,8 +81,21 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Peta Irigasi',
-            'bangunan' => $this->BangunanIrigasiModel->findAll()
+            'bangunan' => $this->BangunanIrigasiModel->getAllBangunan(),
+            'bendung' => $this->BangunanIrigasiModel->bendung(),
+            'jembatan' => $this->BangunanIrigasiModel->jembatan(),
+            'gorong' => $this->BangunanIrigasiModel->gorong(),
+            'bangunanBagi' => $this->BangunanIrigasiModel->bangunanBagi(),
+            'lantai' => $this->BangunanIrigasiModel->lantai(),
+            'sedimentasi' => $this->BangunanIrigasiModel->sedimentasi(),
+            'lining' => $this->BangunanIrigasiModel->lining(),
+            'pintuPenguras' => $this->BangunanIrigasiModel->pintuPenguras(),
+            'intake' => $this->BangunanIrigasiModel->intake(),
+            'primer' => $this->BangunanIrigasiModel->primer(),
+            'boxBagi' => $this->BangunanIrigasiModel->boxBagi(),
+
         ];
+        // dd($data['bendung']);
         echo view('pages/bangunanIrigasi', $data);
     }
 
@@ -148,7 +161,7 @@ class Pages extends BaseController
     }
     public function dataGeojsonBangunan()
     {
-        $irigasi = $this->BangunanIrigasiModel->findAll();
+        $irigasi = $this->BangunanIrigasiModel->getAllBangunan();
         $data = [
             'title' => 'Geojson',
             'bangunan' => $irigasi

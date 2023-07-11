@@ -88,8 +88,20 @@
                         <label for="lebar_atas" class="form-label">Lebar Atas Bangunan Irigasi</label>
                     </div>
                     <div class="form-floating my-3">
-                        <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="keterangan" required>
-                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <select class="form-control" id="keterangan" name="keterangan" required>
+                            <option value="Bendung" selected>Bendung</option>
+                            <option value="Jembatan">Jembatan</option>
+                            <option value="Bangunan Bagi">Bangunan Bagi</option>
+                            <option value="Gorong-Gorong">Gorong-Gorong</option>
+                            <option value="Intake">Intake</option>
+                            <option value="Sedimentasi">Sedimentasi</option>
+                            <option value="Box Bagi">Box Bagi</option>
+                            <option value="Primer">Primer</option>
+                            <option value="Pintu Penguras">Pintu Penguras</option>
+                            <option value="Lining">Lining</option>
+                            <option value="Lantai">Lantai</option>
+                        </select>
+                        <label for="floatingSelect">---Pilih Keterangan---</label>
                     </div>
                     <div class="form-floating my-3">
                         <input type="text" class="form-control" name="kecamatan" id="kecamatan" placeholder="kecamatan" required>

@@ -10,11 +10,27 @@
 </div>
 
 <script>
-    const map = L.map('map').setView([3.696924, 96.885114], 11);
-
-    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Base Map
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
+    });
+
+    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+
+    //Default Base Map
+    var map = L.map('map', {
+        center: [3.696924, 96.885114],
+        zoom: 11,
+        layers: [osm]
+    });
+
+    //Layer Control For Base Layer
+    var baseLayers = {
+        'OpenStreetMap': osm,
+        'ESRI': Esri_WorldImagery
+    };
 
     <?php foreach ($daerah as $value) { ?>
         $.getJSON("<?= base_url('geoJson/daerahIrigasi/' . $value->json); ?>", function(data) {
@@ -34,6 +50,9 @@
             });
         });
     <?php } ?>
+
+    //Add Control Layer
+    var layerControl = L.control.layers(baseLayers).addTo(map);
 </script>
 
 <?= $this->endSection('content'); ?>

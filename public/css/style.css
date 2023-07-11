@@ -337,4 +337,11 @@ article img {
     background-color: #69b69e;
     transform: scale(1.5);
   }
+
+  .leaflet-container {
+    height: 400px;
+    width: 600px;
+    max-width: 100%;
+    max-height: 100%;
+  }
 }

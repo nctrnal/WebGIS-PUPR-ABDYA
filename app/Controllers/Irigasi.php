@@ -41,7 +41,7 @@ class Irigasi extends BaseController
             'bangunan' => $this->BangunanIrigasiModel->getAllBangunan()
 
         ];
-
+        // dd($data);
         echo view('admin/bangunanIrigasiAdmin', $data);
     }
     public function daerahIrigasiAdmin()

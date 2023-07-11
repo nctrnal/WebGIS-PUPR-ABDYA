@@ -12,54 +12,49 @@
 
 
 <script>
-const map = L.map('map').setView([3.696924, 96.885114], 11);
+    // Base Map
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
 
-const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
 
+    //Default Base Map
+    var map = L.map('map', {
+        center: [3.696924, 96.885114],
+        zoom: 11,
+        layers: [osm]
+    });
 
-map.dragging.enable();
-
-<?php foreach ($jaringan as $value) { ?>
-	$.getJSON("<?= base_url('geoJson/jaringanIrigasi/' . $value->json); ?>", function(data) {
-		geoLayer = L.geoJson(data, {
-			style: function(feature) {
-				return {
-					opacity: 1.0,
-					color: '<?= $value->warna; ?>',
-				}
-			},
-		}).addTo(map);
-
-		geoLayer.eachLayer(function(layer) {
-			geoLayer.bindPopup("Nama : <?= $value->nama; ?><br>" +
-				"Panjang : <?= $value->panjang; ?> Meter <br>" +
-				"Kecamatan : <?= $value->kecamatan; ?><br><br>" +
-				"<img id='fotoPeta' src='<?= base_url('uploads/fotoIrigasi/jaringanIrigasi/' . $value->foto); ?>'>");
-		});
-	});
-<?php } ?>
-
-var legend = L.control({position: 'bottomleft'});
-    legend.onAdd = function (map) {
-
-    var div = L.DomUtil.create('div', 'info legend');
-    labels = ['<strong>Categories</strong>'],
-    categories = ['Road Surface','Signage','Line Markings','Roadside Hazards','Other'];
-
-    for (var i = 0; i < categories.length; i++) {
-
-            div.innerHTML += 
-            labels.push(
-                '<i class="circle" style="background:' + getColor(categories[i]) + '"></i> ' +
-            (categories[i] ? categories[i] : '+'));
-
-        }
-        div.innerHTML = labels.join('<br>');
-    return div;
+    //Layer Control For Base Layer
+    var baseLayers = {
+        'OpenStreetMap': osm,
+        'ESRI': Esri_WorldImagery
     };
-    legend.addTo(map);
+
+    <?php foreach ($jaringan as $value) { ?>
+        $.getJSON("<?= base_url('geoJson/jaringanIrigasi/' . $value->json); ?>", function(data) {
+            geoLayer = L.geoJson(data, {
+                style: function(feature) {
+                    return {
+                        opacity: 1.0,
+                        color: '<?= $value->warna; ?>',
+                    }
+                },
+            }).addTo(map);
+
+            geoLayer.eachLayer(function(layer) {
+                geoLayer.bindPopup("Nama : <?= $value->nama; ?><br>" +
+                    "Panjang : <?= $value->panjang; ?> Meter <br>" +
+                    "Kecamatan : <?= $value->kecamatan; ?><br><br>" +
+                    "<img id='fotoPeta' src='<?= base_url('uploads/fotoIrigasi/jaringanIrigasi/' . $value->foto); ?>'>");
+            });
+        });
+    <?php } ?>
+
+    var layerControl = L.control.layers(baseLayers).addTo(map);
 </script>
 
 <?= $this->endSection('content'); ?>
