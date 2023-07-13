@@ -81,7 +81,6 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Peta Irigasi',
-            'bangunan' => $this->BangunanIrigasiModel->getAllBangunan(),
             'bendung' => $this->BangunanIrigasiModel->bendung(),
             'jembatan' => $this->BangunanIrigasiModel->jembatan(),
             'gorong' => $this->BangunanIrigasiModel->gorong(),
