@@ -34,6 +34,11 @@
         'ESRI': Esri_WorldImagery
     };
 
+    var layerControl = L.control.layers(baseLayers);
+
+    //Iterasi untuk menampilkan semua SHP yang ada di database
+    // var jaringan = L.layerGroup();
+
     <?php foreach ($jaringan as $value) { ?>
         $.getJSON("<?= base_url('geoJson/jaringanIrigasi/' . $value->json); ?>", function(data) {
             geoLayer = L.geoJson(data, {
@@ -51,10 +56,11 @@
                     "Kecamatan : <?= $value->kecamatan; ?><br><br>" +
                     "<img id='fotoPeta' src='<?= base_url('uploads/fotoIrigasi/jaringanIrigasi/' . $value->foto); ?>'>");
             });
+            layerControl.addOverlay(geoLayer, "<?= $value->nama; ?>");
         });
     <?php } ?>
 
-    var layerControl = L.control.layers(baseLayers).addTo(map);
+    layerControl.addTo(map);
 </script>
 
 <?= $this->endSection('content'); ?>

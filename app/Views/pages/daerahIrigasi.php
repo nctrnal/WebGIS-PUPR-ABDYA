@@ -32,6 +32,11 @@
         'ESRI': Esri_WorldImagery
     };
 
+    //definisikan layerControl dan memasukkan baseLayer kedalam layer control
+    var layerControl = L.control.layers(baseLayers);
+
+
+    //untuk menampilkan seluruh data yang ada di database
     <?php foreach ($daerah as $value) { ?>
         $.getJSON("<?= base_url('geoJson/daerahIrigasi/' . $value->json); ?>", function(data) {
             geoLayer = L.geoJson(data, {
@@ -48,11 +53,12 @@
                     "Luas : <?= $value->luas; ?> Hektar <br>" +
                     "Kecamatan : <?= $value->kecamatan; ?><br>");
             });
+            layerControl.addOverlay(geoLayer, "<?= $value->nama; ?>")
         });
     <?php } ?>
 
     //Add Control Layer
-    var layerControl = L.control.layers(baseLayers).addTo(map);
+    layerControl.addTo(map);
 </script>
 
 <?= $this->endSection('content'); ?>

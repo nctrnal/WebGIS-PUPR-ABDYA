@@ -82,7 +82,7 @@
             geoLayer = L.geoJson(data, {
                 pointToLayer: function(feature, latlng) {
                     return L.marker(latlng, {
-                        icon: bendungIcon
+                        icon: jembatanIcon
                     });
                 }
             });
@@ -116,7 +116,7 @@
             geoLayer = L.geoJson(data, {
                 pointToLayer: function(feature, latlng) {
                     return L.marker(latlng, {
-                        icon: bendungIcon
+                        icon: gorongIcon
                     });
                 }
             });
@@ -376,12 +376,6 @@
     <?php } ?>
     //aaaaaaa
     layerControl.addOverlay(boxBagi, "Box Bagi"); // Add the allGeoLayers layer group to the layer control
-
-
-    // Control Layer for Legend
-    // var overlays = {
-    //     'Bangunan': bendungan
-    // };
 
     //Add Control Layer
     layerControl.addTo(map);
