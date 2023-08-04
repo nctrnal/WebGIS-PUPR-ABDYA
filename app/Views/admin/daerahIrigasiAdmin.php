@@ -74,7 +74,7 @@
                         <label for="nama" class="form-label">Nama Daerah</label>
                     </div>
                     <div class="form-floating my-3">
-                        <input type="number" class="form-control" name="luas" id="luas" placeholder="luas" required>
+                        <input type="number" step="0.01" value="0.00" class="form-control" name="luas" id="luas" placeholder="luas" required>
                         <label for="luas" class="form-label">Luas</label>
                     </div>
                     <div class="form-floating my-3">

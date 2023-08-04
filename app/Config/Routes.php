@@ -88,6 +88,10 @@ $routes->post('Login/process', 'Login::process');
 $routes->get('Login/logout', 'Login::logout');
 
 
+//Shapefile
+$routes->get('download-shp/(:num)', 'Shapefile::convertToSHP/$1');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

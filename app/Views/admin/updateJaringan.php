@@ -22,7 +22,7 @@
                             <label for="nama" class="form-label">Nama Daerah</label>
                         </div>
                         <div class="form-floating my-3">
-                            <input type="number" class="form-control" name="panjang" id="panjang" placeholder="panjang" value="<?= $irigasi->panjang; ?>" required>
+                            <input type="number" step="0.01" value="0.00" class="form-control" name="panjang" id="panjang" placeholder="panjang" value="<?= $irigasi->panjang; ?>" required>
                             <label for="panjang" class="form-label">Panjang Jaringan Irigasi</label>
                         </div>
                         <div class="form-floating my-3">

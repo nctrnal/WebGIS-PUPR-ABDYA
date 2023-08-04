@@ -43,7 +43,10 @@ class Pages extends BaseController
             'title' => 'Beranda',
             'berita' => $this->BeritaModel->orderBy("created_at", "desc")->first(),
             'berita1' => $this->BeritaModel->paginate(6, 'berita1'),
-            'pager' => $this->BeritaModel->pager
+            'pager' => $this->BeritaModel->pager,
+            'daerah' => $this->DaerahIrigasiModel->getAllDaerah(),
+            'bangunan' => $this->BangunanIrigasiModel->getAllBangunan(),
+            'jaringan' => $this->JaringanIrigasiModel->getAllJaringan(),
         ];
         return view('pages/home', $data);
         // dd($data);

@@ -16,4 +16,9 @@ class DaerahIrigasiModel extends Model
     {
         return $this->findAll();
     }
+
+    public function getGeoJSONbyId($id)
+    {
+        return $this->where('id', $id)->get()->getRow();
+    }
 }

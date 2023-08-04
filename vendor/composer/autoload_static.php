@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0d3da21e9f92992c55a0313c9e133587
+class ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f
 {
     public static $files = array (
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
@@ -880,6 +880,7 @@ class ComposerStaticInit0d3da21e9f92992c55a0313c9e133587
         'Faker\\Provider\\nl_NL\\PhoneNumber' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/PhoneNumber.php',
         'Faker\\Provider\\nl_NL\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Text.php',
         'Faker\\Provider\\pl_PL\\Address' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/pl_PL/Address.php',
+        'Faker\\Provider\\pl_PL\\Color' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/pl_PL/Color.php',
         'Faker\\Provider\\pl_PL\\Company' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/pl_PL/Company.php',
         'Faker\\Provider\\pl_PL\\Internet' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/pl_PL/Internet.php',
         'Faker\\Provider\\pl_PL\\LicensePlate' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/pl_PL/LicensePlate.php',
@@ -1334,8 +1335,8 @@ class ComposerStaticInit0d3da21e9f92992c55a0313c9e133587
         'PHPUnit\\TextUI\\XmlConfiguration\\Migrator' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/XmlConfiguration/Migration/Migrator.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\MoveAttributesFromFilterWhitelistToCoverage' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/XmlConfiguration/Migration/Migrations/MoveAttributesFromFilterWhitelistToCoverage.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\MoveAttributesFromRootToCoverage' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/XmlConfiguration/Migration/Migrations/MoveAttributesFromRootToCoverage.php',
-        'PHPUnit\\TextUI\\XmlConfiguration\\MoveWhitelistDirectoriesToCoverage' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/XmlConfiguration/Migration/Migrations/MoveWhitelistDirectoriesToCoverage.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\MoveWhitelistExcludesToCoverage' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/XmlConfiguration/Migration/Migrations/MoveWhitelistExcludesToCoverage.php',
+        'PHPUnit\\TextUI\\XmlConfiguration\\MoveWhitelistIncludesToCoverage' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/XmlConfiguration/Migration/Migrations/MoveWhitelistIncludesToCoverage.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\PHPUnit' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/XmlConfiguration/PHPUnit/PHPUnit.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\Php' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/XmlConfiguration/PHP/Php.php',
         'PHPUnit\\TextUI\\XmlConfiguration\\PhpHandler' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/XmlConfiguration/PHP/PhpHandler.php',
@@ -1972,10 +1973,10 @@ class ComposerStaticInit0d3da21e9f92992c55a0313c9e133587
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0d3da21e9f92992c55a0313c9e133587::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0d3da21e9f92992c55a0313c9e133587::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit0d3da21e9f92992c55a0313c9e133587::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit0d3da21e9f92992c55a0313c9e133587::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f::$classMap;
 
         }, null, ClassLoader::class);
     }

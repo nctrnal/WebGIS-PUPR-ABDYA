@@ -22,11 +22,11 @@
                             <label for="nama" class="form-label">Nama Daerah</label>
                         </div>
                         <div class="form-floating my-3">
-                            <input type="number" class="form-control" name="lebar_bawah" id="lebar_bawah" placeholder="lebar_bawah" value="<?= $bangunan->lebar_bawah; ?>" required>
+                            <input type="number" step="0.01" value="0.00" class="form-control" name="lebar_bawah" id="lebar_bawah" placeholder="lebar_bawah" value="<?= $bangunan->lebar_bawah; ?>" required>
                             <label for="lebar_bawah" class="form-label">Lebar Bawah Daerah Irigasi</label>
                         </div>
                         <div class="form-floating my-3">
-                            <input type="number" class="form-control" name="lebar_atas" id="lebar_atas" placeholder="lebar_atas" value="<?= $bangunan->lebar_atas; ?>" required>
+                            <input type="number" step="0.01" value="0.00" class="form-control" name="lebar_atas" id="lebar_atas" placeholder="lebar_atas" value="<?= $bangunan->lebar_atas; ?>" required>
                             <label for="lebar_atas" class="form-label">Lebar Atas Daerah Irigasi</label>
                         </div>
                         <div class="form-floating my-3">
