@@ -52,7 +52,7 @@
                     <label for="floatingSelect">---Pilih Identitas Pelapor---</label>
                 </div>
                 <div class="form-floating my-3">
-                    <textarea style="height: 200px;" class="form-control" name="lokasi" id="lokasi" placeholder="lokasi" required></textarea>
+                    <textarea style="height: 200px;" class="form-control" name="lokasi" id="lokasi" placeholder="lokasi"></textarea>
                     <label for="lokasi" class="form-label">Lokasi</label>
                 </div>
                 <div class="form-floating my-3">
