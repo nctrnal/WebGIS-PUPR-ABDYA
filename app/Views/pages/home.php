@@ -1,6 +1,20 @@
 <?= $this->extend('layouts/template'); ?>
 
 <?= $this->section('content'); ?>
+<div class="container">
+  <strong>
+    <?php if (!empty(session()->getFlashdata('success'))) : ?>
+      <div class="mt-3 alert alert-success alert-dismissible fade show" role="alert">
+        <?php echo session()->getFlashdata('success'); ?>
+      </div>
+    <?php endif; ?>
+    <?php if (!empty(session()->getFlashdata('error'))) : ?>
+      <div class="mt-3 alert alert-error alert-dismissible fade show" role="alert">
+        <?php echo session()->getFlashdata('error'); ?>
+      </div>
+    <?php endif; ?>
+  </strong>
+</div>
 
 <div class="container">
   <h1 style="
@@ -27,17 +41,6 @@
 
 <h1 style="margin-top: 0.3cm; margin-bottom: 1cm; text-align: center; background-color: #69b69e">BERITA</h1>
 <div class="container">
-  <?php if (!empty(session()->getFlashdata('success'))) : ?>
-    <div class="mt-3 alert alert-success alert-dismissible fade show" role="alert">
-      <?php echo session()->getFlashdata('success'); ?>
-    </div>
-  <?php endif; ?>
-  <?php if (!empty(session()->getFlashdata('error'))) : ?>
-    <div class="mt-3 alert alert-error alert-dismissible fade show" role="alert">
-      <?php echo session()->getFlashdata('error'); ?>
-    </div>
-  <?php endif; ?>
-
   <div class="container">
     <div class="row">
       <?php foreach ($berita1 as $a) { ?>
@@ -78,50 +81,6 @@
 </div>
 
 <script>
-  //Bangunan Irigasi
-  <?php foreach ($bangunan as $value) { ?>
-    $.getJSON("<?= base_url('geoJson/bangunanIrigasi/' . $value->json); ?>", function(data) {
-      //Load geoJson ke map
-      geoLayer = L.geoJson(data, {
-        style: function(feature) {
-          return {
-            opacity: 1.0,
-            color: '<?= $value->warna; ?>',
-          }
-        }
-      }).addTo(map);
-    });
-  <?php } ?>
-
-  //Daerah Irigasi untuk layer dasar
-  <?php foreach ($daerah as $value) { ?>
-    $.getJSON("<?= base_url('geoJson/daerahIrigasi/' . $value->json); ?>", function(data) {
-      geoLayer = L.geoJson(data, {
-        style: function(feature) {
-          return {
-            opacity: 1.0,
-            color: '<?= $value->warna; ?>',
-          }
-        },
-      }).addTo(map);
-    });
-  <?php } ?>
-
-  //Jaringan Irigasi
-  <?php foreach ($jaringan as $value) { ?>
-    $.getJSON("<?= base_url('geoJson/jaringanIrigasi/' . $value->json); ?>", function(data) {
-      geoLayer = L.geoJson(data, {
-        style: function(feature) {
-          return {
-            opacity: 1.0,
-            color: '<?= $value->warna; ?>',
-          }
-        },
-      }).addTo(map);
-    });
-  <?php } ?>
-
-
   // Base Map
   var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -144,8 +103,59 @@
     'ESRI': Esri_WorldImagery
   };
 
-  //Tambahkan baseLayer kedalam layerControl
   var layerControl = L.control.layers(baseLayers);
+
+  //Jaringan Irigasi
+  var jaringanIrigasi = L.layerGroup();
+  <?php foreach ($jaringan as $value) { ?>
+    $.getJSON("<?= base_url('geoJson/jaringanIrigasi/' . $value->json); ?>", function(data) {
+      geoLayer = L.geoJson(data, {
+        style: function(feature) {
+          return {
+            opacity: 1.0,
+            color: '<?= $value->warna; ?>',
+          }
+        },
+      });
+      jaringanIrigasi.addLayer(geoLayer);
+    });
+  <?php } ?>
+  layerControl.addOverlay(jaringanIrigasi, "Jaringan Irigasi");
+
+
+  //Bangunan Irigasi
+  var bangunanIrigasi = L.layerGroup();
+  <?php foreach ($bangunan as $value) { ?>
+    $.getJSON("<?= base_url('geoJson/bangunanIrigasi/' . $value->json); ?>", function(data) {
+      //Load geoJson ke map
+      geoLayer = L.geoJson(data, {
+        style: function(feature) {
+          return {
+            opacity: 1.0,
+            color: '<?= $value->warna; ?>',
+          }
+        }
+      });
+      bangunanIrigasi.addLayer(geoLayer);
+    });
+  <?php } ?>
+  layerControl.addOverlay(bangunanIrigasi, "Bangunan Irigasi");
+
+  //Daerah Irigasi untuk layer dasar
+  var daerahIrigasi = L.layerGroup();
+  <?php foreach ($daerah as $value) { ?>
+    $.getJSON("<?= base_url('geoJson/daerahIrigasi/' . $value->json); ?>", function(data) {
+      geoLayer = L.geoJson(data, {
+        style: function(feature) {
+          return {
+            opacity: 1.0,
+            color: '<?= $value->warna; ?>',
+          }
+        },
+      }).addTo(map);
+    });
+  <?php } ?>
+
   //Tambahkan layerControl kedalam peta
   layerControl.addTo(map);
 </script>

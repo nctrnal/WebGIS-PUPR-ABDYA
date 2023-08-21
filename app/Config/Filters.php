@@ -8,6 +8,7 @@ use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
+use Myth\Auth\Collectors\Auth;
 
 class Filters extends BaseConfig
 {
@@ -21,6 +22,7 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'auth' => \App\Filters\AuthFilter::class,
     ];
 
     /**
@@ -29,6 +31,7 @@ class Filters extends BaseConfig
      */
     public array $globals = [
         'before' => [
+            'auth' => ['except' => ['/', 'Pages/index', 'Pages/*', 'downloadShapefile/*', 'Pelaporan/*', 'Login/*', 'Berkas/downloadDaerahGeojson/*', 'Berkas/downloadJaringanGeojson/*', 'Berkas/downloadBangunanGeojson/*', 'Berkas/viewDaerah/*', 'Berkas/viewJaringan/*', 'Berkas/downloadJaringan/*', 'Berkas/download/*', 'Admin/saveLaporan']],
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',

@@ -10,4 +10,9 @@ class LoginModel extends Model
     protected $primaryKey       = 'username';
     protected $returnType       = 'object';
     protected $allowedFields    = ['username', 'password'];
+
+    public function getUserByUsername($username)
+    {
+        return $this->where('username', $username)->first();
+    }
 }

@@ -1,5 +1,7 @@
 <?= $this->extend('layouts/template'); ?>
 
+<script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+
 <?= $this->section('content'); ?>
 
 <div class="container">
@@ -26,7 +28,8 @@
                             <td><?= $value->nama; ?></td>
                             <td><?= $value->kecamatan; ?></td>
                             <td>
-                                <a href="<?= base_url(); ?>download-shp/<?= $value->id; ?>" class="btn btn-primary"><i class="bi bi-download"></i> Download
+                                <a href="<?= base_url(); ?>Berkas/downloadDaerahGeojson/<?= $value->id; ?>" class="btn btn-primary"><i class="bi bi-download"></i> GeoJSON </a>
+                                <a id="convert" href="<?= base_url(); ?>downloadShapefile/convert/<?= $value->id; ?>" class="btn btn-primary"><i class="bi bi-download"></i> Shapefile
                                 </a>
                             </td>
                         </tr>
@@ -38,5 +41,8 @@
         </div>
     </div>
 </div>
+
+
+<script src="<?= base_url('js/convert.js'); ?>"></script>
 
 <?= $this->endSection('content'); ?>

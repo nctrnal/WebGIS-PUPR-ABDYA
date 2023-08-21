@@ -17,6 +17,10 @@ class ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f
         array (
             'Tests\\Support\\' => 14,
         ),
+        'S' => 
+        array (
+            'Shapefile\\' => 10,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -29,6 +33,7 @@ class ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f
         ),
         'L' => 
         array (
+            'Location\\' => 9,
             'Laminas\\Escaper\\' => 16,
         ),
         'F' => 
@@ -44,12 +49,20 @@ class ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f
         array (
             'CodeIgniter\\' => 12,
         ),
+        'A' => 
+        array (
+            'App\\Filters\\' => 12,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Tests\\Support\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests/_support',
+        ),
+        'Shapefile\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile',
         ),
         'Psr\\Log\\' => 
         array (
@@ -66,6 +79,10 @@ class ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f
         'Myth\\Auth\\' => 
         array (
             0 => __DIR__ . '/..' . '/myth/auth/src',
+        ),
+        'Location\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mjaschen/phpgeo/src',
         ),
         'Laminas\\Escaper\\' => 
         array (
@@ -87,6 +104,10 @@ class ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f
         array (
             0 => __DIR__ . '/..' . '/codeigniter4/framework/system',
         ),
+        'App\\Filters\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/Filters',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -100,6 +121,7 @@ class ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f
     );
 
     public static $classMap = array (
+        'App\\Filters\\AuthFilter' => __DIR__ . '/../..' . '/app/Filters/AuthFilter.php',
         'CodeIgniter\\API\\ResponseTrait' => __DIR__ . '/..' . '/codeigniter4/framework/system/API/ResponseTrait.php',
         'CodeIgniter\\Autoloader\\Autoloader' => __DIR__ . '/..' . '/codeigniter4/framework/system/Autoloader/Autoloader.php',
         'CodeIgniter\\Autoloader\\FileLocator' => __DIR__ . '/..' . '/codeigniter4/framework/system/Autoloader/FileLocator.php',
@@ -997,6 +1019,51 @@ class ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f
         'Laminas\\Escaper\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/laminas/laminas-escaper/src/Exception/ExceptionInterface.php',
         'Laminas\\Escaper\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/laminas/laminas-escaper/src/Exception/InvalidArgumentException.php',
         'Laminas\\Escaper\\Exception\\RuntimeException' => __DIR__ . '/..' . '/laminas/laminas-escaper/src/Exception/RuntimeException.php',
+        'Location\\Bearing\\BearingEllipsoidal' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Bearing/BearingEllipsoidal.php',
+        'Location\\Bearing\\BearingInterface' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Bearing/BearingInterface.php',
+        'Location\\Bearing\\BearingSpherical' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Bearing/BearingSpherical.php',
+        'Location\\Bearing\\DirectVincentyBearing' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Bearing/DirectVincentyBearing.php',
+        'Location\\Bearing\\InverseVincentyBearing' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Bearing/InverseVincentyBearing.php',
+        'Location\\Bounds' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Bounds.php',
+        'Location\\CardinalDirection\\CardinalDirection' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/CardinalDirection/CardinalDirection.php',
+        'Location\\CardinalDirection\\CardinalDirectionDistances' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/CardinalDirection/CardinalDirectionDistances.php',
+        'Location\\CardinalDirection\\CardinalDirectionDistancesCalculator' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/CardinalDirection/CardinalDirectionDistancesCalculator.php',
+        'Location\\Coordinate' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Coordinate.php',
+        'Location\\Direction\\Direction' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Direction/Direction.php',
+        'Location\\Distance\\DistanceInterface' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Distance/DistanceInterface.php',
+        'Location\\Distance\\Haversine' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Distance/Haversine.php',
+        'Location\\Distance\\Vincenty' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Distance/Vincenty.php',
+        'Location\\Ellipsoid' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Ellipsoid.php',
+        'Location\\Exception\\BearingNotAvailableException' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Exception/BearingNotAvailableException.php',
+        'Location\\Exception\\InvalidDistanceException' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Exception/InvalidDistanceException.php',
+        'Location\\Exception\\InvalidGeometryException' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Exception/InvalidGeometryException.php',
+        'Location\\Exception\\InvalidPolygonException' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Exception/InvalidPolygonException.php',
+        'Location\\Exception\\NotConvergingException' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Exception/NotConvergingException.php',
+        'Location\\Exception\\NotMatchingEllipsoidException' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Exception/NotMatchingEllipsoidException.php',
+        'Location\\Factory\\BoundsFactory' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Factory/BoundsFactory.php',
+        'Location\\Factory\\CoordinateFactory' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Factory/CoordinateFactory.php',
+        'Location\\Factory\\GeometryFactoryInterface' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Factory/GeometryFactoryInterface.php',
+        'Location\\Formatter\\Coordinate\\DMS' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Formatter/Coordinate/DMS.php',
+        'Location\\Formatter\\Coordinate\\DecimalDegrees' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Formatter/Coordinate/DecimalDegrees.php',
+        'Location\\Formatter\\Coordinate\\DecimalMinutes' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Formatter/Coordinate/DecimalMinutes.php',
+        'Location\\Formatter\\Coordinate\\FormatterInterface' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Formatter/Coordinate/FormatterInterface.php',
+        'Location\\Formatter\\Coordinate\\GeoJSON' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Formatter/Coordinate/GeoJSON.php',
+        'Location\\Formatter\\Polygon\\FormatterInterface' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Formatter/Polygon/FormatterInterface.php',
+        'Location\\Formatter\\Polygon\\GeoJSON' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Formatter/Polygon/GeoJSON.php',
+        'Location\\Formatter\\Polyline\\FormatterInterface' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Formatter/Polyline/FormatterInterface.php',
+        'Location\\Formatter\\Polyline\\GeoJSON' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Formatter/Polyline/GeoJSON.php',
+        'Location\\GeometryInterface' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/GeometryInterface.php',
+        'Location\\GetBoundsTrait' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/GetBoundsTrait.php',
+        'Location\\Intersection\\Intersection' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Intersection/Intersection.php',
+        'Location\\Line' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Line.php',
+        'Location\\Polygon' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Polygon.php',
+        'Location\\Polyline' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Polyline.php',
+        'Location\\Processor\\Polyline\\SimplifyBearing' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Processor/Polyline/SimplifyBearing.php',
+        'Location\\Processor\\Polyline\\SimplifyDouglasPeucker' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Processor/Polyline/SimplifyDouglasPeucker.php',
+        'Location\\Processor\\Polyline\\SimplifyInterface' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Processor/Polyline/SimplifyInterface.php',
+        'Location\\Utility\\Cartesian' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Utility/Cartesian.php',
+        'Location\\Utility\\PerpendicularDistance' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Utility/PerpendicularDistance.php',
+        'Location\\Utility\\PointToLineDistance' => __DIR__ . '/..' . '/mjaschen/phpgeo/src/Utility/PointToLineDistance.php',
         'Myth\\Auth\\AuthTrait' => __DIR__ . '/..' . '/myth/auth/src/AuthTrait.php',
         'Myth\\Auth\\Authentication\\Activators\\ActivatorInterface' => __DIR__ . '/..' . '/myth/auth/src/Authentication/Activators/ActivatorInterface.php',
         'Myth\\Auth\\Authentication\\Activators\\BaseActivator' => __DIR__ . '/..' . '/myth/auth/src/Authentication/Activators/BaseActivator.php',
@@ -1937,6 +2004,19 @@ class ComposerStaticInitf32d5fa83e5bb1052adb205aab4f305f
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/type/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/type/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Shapefile\\Geometry\\Geometry' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/Geometry/Geometry.php',
+        'Shapefile\\Geometry\\GeometryCollection' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/Geometry/GeometryCollection.php',
+        'Shapefile\\Geometry\\Linestring' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/Geometry/Linestring.php',
+        'Shapefile\\Geometry\\MultiLinestring' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/Geometry/MultiLinestring.php',
+        'Shapefile\\Geometry\\MultiPoint' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/Geometry/MultiPoint.php',
+        'Shapefile\\Geometry\\MultiPolygon' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/Geometry/MultiPolygon.php',
+        'Shapefile\\Geometry\\Point' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/Geometry/Point.php',
+        'Shapefile\\Geometry\\Polygon' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/Geometry/Polygon.php',
+        'Shapefile\\Shapefile' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/Shapefile.php',
+        'Shapefile\\ShapefileAutoloader' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/ShapefileAutoloader.php',
+        'Shapefile\\ShapefileException' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/ShapefileException.php',
+        'Shapefile\\ShapefileReader' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/ShapefileReader.php',
+        'Shapefile\\ShapefileWriter' => __DIR__ . '/..' . '/sw897/php-shapefile/src/Shapefile/ShapefileWriter.php',
         'Tests\\Support\\Database\\Seeds\\ExampleSeeder' => __DIR__ . '/../..' . '/tests/_support/Database/Seeds/ExampleSeeder.php',
         'Tests\\Support\\Libraries\\ConfigReader' => __DIR__ . '/../..' . '/tests/_support/Libraries/ConfigReader.php',
         'Tests\\Support\\Models\\ExampleModel' => __DIR__ . '/../..' . '/tests/_support/Models/ExampleModel.php',

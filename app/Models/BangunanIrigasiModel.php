@@ -23,7 +23,15 @@ class BangunanIrigasiModel extends Model
     public function getAllBangunan()
     {
         $builder = $this->db->table('bangunanIrigasi');
-        $query = $builder->get()->getResult();
+        $query = $builder->get()->getResultObject();
+        return $query;
+    }
+
+    public function getBangunanId($id)
+    {
+        $builder = $this->db->table($this->table);
+        $builder->where('id', $id);
+        $query = $builder->get()->getRow();
         return $query;
     }
 

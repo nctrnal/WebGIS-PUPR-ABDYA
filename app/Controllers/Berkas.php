@@ -8,6 +8,7 @@ use App\Models\BerkasJaringanModel;
 use App\Models\JaringanIrigasiModel;
 use App\Models\DaerahIrigasiModel;
 use App\Models\BangunanIrigasiModel;
+use CodeIgniter\Filters\Filters;
 use Dompdf\Dompdf;
 
 class Berkas extends BaseController
@@ -25,7 +26,6 @@ class Berkas extends BaseController
         $this->JaringanIrigasiModel = new JaringanIrigasiModel();
         $this->DaerahIrigasiModel = new DaerahIrigasiModel();
         $this->BangunanIrigasiModel = new BangunanIrigasiModel();
-
     }
 
 
@@ -250,7 +250,7 @@ class Berkas extends BaseController
     public function downloadBangunanGeojson($id)
     {
         $bangunan = $this->BangunanIrigasiModel;
-        $data = $bangunan->find($id);
+        $data = $bangunan->getBangunanId($id);
         return $this->response->download('geojson/bangunanIrigasi/' . $data->json, null);
     }
     public function downloadDaerahGeojson($id)
@@ -259,6 +259,4 @@ class Berkas extends BaseController
         $data = $daerah->find($id);
         return $this->response->download('geojson/daerahIrigasi/' . $data->json, null);
     }
-
-
 }

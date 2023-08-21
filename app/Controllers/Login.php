@@ -8,32 +8,31 @@ class Login extends BaseController
 {
     public function process()
     {
-        $users = new LoginModel();
+        $session = session();
+        $model = new LoginModel();
+
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
-        $dataUser = $users->where([
-            'username' => $username,
-        ])->first();
-        if ($dataUser) {
-            if (password_verify($password, $dataUser->password)) {
-                session()->set([
-                    'username' => $dataUser->username,
-                    'logged_in' => TRUE
-                ]);
-                return redirect()->to(base_url('Admin/'));
+        $user = $model->getUserByUsername($username);
+
+        if ($user) {
+            if (password_verify($password, $user->password)) {
+                $session->set('isLoggedIn', true);
+                $session->set('username', $user->username);
+                return redirect()->to('/Admin'); // Ganti dengan halaman setelah berhasil login
             } else {
-                session()->setFlashdata('error', 'Password yang anda masukkan salah');
-                return redirect()->back();
+                return redirect()->back()->with('error', 'Password salah');
             }
         } else {
-            session()->setFlashdata('error', 'Username yang anda masukkan salah');
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Username tidak ditemukan');
         }
     }
 
-    function logout()
+    public function logout()
     {
-        session()->destroy();
-        return redirect()->to('Pages/');
+        $session = session();
+        $session->remove('isLoggedIn');
+        $session->remove('username');
+        return redirect()->to('/login'); // Ganti dengan halaman login
     }
 }

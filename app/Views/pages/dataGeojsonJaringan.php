@@ -26,7 +26,9 @@
                             <td><?= $value->nama; ?></td>
                             <td><?= $value->kecamatan; ?></td>
                             <td>
-                                <a href="<?= base_url(); ?>/Berkas/downloadJaringanGeojson/<?= $value->id; ?>" class="btn btn-primary"><i class="bi bi-download"></i> Download
+                                <a href="<?= base_url(); ?>/Berkas/downloadJaringanGeojson/<?= $value->id; ?>" class="btn btn-primary"><i class="bi bi-download"></i> GeoJSON
+                                </a>
+                                <a href="#" class="btn btn-primary"><i class="bi bi-download"></i> Shapefile
                                 </a>
                             </td>
                         </tr>

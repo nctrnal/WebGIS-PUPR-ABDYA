@@ -21,4 +21,13 @@ class DaerahIrigasiModel extends Model
     {
         return $this->where('id', $id)->get()->getRow();
     }
+
+    public function getGeoJSONFilenames()
+    {
+        $builder = $this->db->table($this->table);
+        $builder->select('json'); // Ganti dengan nama kolom yang menyimpan nama file GeoJSON
+        $query = $builder->get();
+
+        return $query->getResultObject();
+    }
 }

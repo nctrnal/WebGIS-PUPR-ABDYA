@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Pelaporan extends Migration
+class LaporanDiterima extends Migration
 {
     public function up()
     {
@@ -27,7 +27,7 @@ class Pelaporan extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
-            'status'       => [
+            'jenis_kerusakan'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
             ],
@@ -35,7 +35,11 @@ class Pelaporan extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '1000',
             ],
-            'koodinat'       => [
+            'longitude'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '1000',
+            ],
+            'latitude'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '1000',
             ],
@@ -53,11 +57,11 @@ class Pelaporan extends Migration
             ]
         ]);
         $this->forge->addPrimaryKey('id_pelaporan');
-        $this->forge->createTable('pelaporan');
+        $this->forge->createTable('laporanDiterima');
     }
 
     public function down()
     {
-        $this->forge->dropTable('pelaporan');
+        $this->forge->dropTable('laporanDiterima');
     }
 }

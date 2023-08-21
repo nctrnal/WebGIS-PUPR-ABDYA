@@ -21,7 +21,8 @@
                         <th scope="col">No</th>
                         <th scope="col">Lokasi</th>
                         <th scope="col">Kerusakan</th>
-                        <th scope="col">Koordinat</th>
+                        <th scope="col">Longitude</th>
+                        <th scope="col">Latitude</th>
                         <th scope="col">Tanggal Laporan</th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -35,7 +36,8 @@
                             <th><?= $no++; ?></th>
                             <td><?= $value->lokasi; ?> </td>
                             <td><?= $value->deskripsi; ?> </td>
-                            <td><?= $value->koordinat; ?> </td>
+                            <td><?= $value->longitude; ?> </td>
+                            <td><?= $value->latitude; ?> </td>
                             <td><?= $value->created_at; ?> </td>
                             <td>
                                 <a href="<?= base_url(); ?>/Admin/detailLaporan/<?= $value->id_pelaporan; ?>" class="btn btn-success"><i class="bi bi-pencil-square"></i> Detail</a>

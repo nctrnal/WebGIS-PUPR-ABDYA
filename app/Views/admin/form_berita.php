@@ -44,10 +44,6 @@
                             <label for="judul" class="form-label">Judul</label>
                         </div>
                         <div class="form-floating my-3">
-                            <input type="text" class="form-control" name="penulis" id="penulis" placeholder="penulis" required>
-                            <label for="penulis" class="form-label">Penulis</label>
-                        </div>
-                        <div class="form-floating my-3">
                             <select class="form-control" id="kategori" name="kategori" required>
                                 <?php foreach ($kategori as $value) { ?>
                                     <option selectes value="<?= $value->kategori; ?>"><?= $value->kategori; ?></option>

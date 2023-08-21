@@ -44,10 +44,10 @@ $routes->get('Pages/berita/(:any)', 'Pages::berita/$1');
 
 //Berkas
 $routes->get('Berkas', 'Berkas::index');
-$routes->get('Berkas/save', 'Berkas::index');
+// $routes->get('Berkas/save', 'Berkas::index');
 $routes->get('Berkas/create', 'Berkas::create');
 $routes->get('Berkas/download/(:num)', 'Berkas::download/$1');
-$routes->get('Berkas/update/(:num)', 'Berkas::update/$1');
+$routes->get('Berkas/update/(:num)', 'Berkas::update/$1', ['filter' => 'auth']);
 $routes->post('Berkas/save', 'Berkas::save');
 $routes->post('Berkas/updateData/(:num)', 'Berkas::updateData/$1');
 $routes->delete('Berkas/delete/(:num)', 'Berkas::delete/$1');
@@ -59,6 +59,7 @@ $routes->get('Admin', 'Admin::index');
 $routes->post('Admin/saveLaporan', 'Admin::saveLaporan');
 $routes->get('Admin/terimaLaporan/(:num)', 'Admin::terimaLaporan/$1');
 $routes->delete('Admin/tolakLaporan/(:num)', 'Admin::tolakLaporan/$1');
+
 //admin->berita
 $routes->post('Admin/tambahBerita', 'Admin::tambahBerita');
 $routes->post('Admin/update/(:num)', 'Admin::update/$1');
@@ -89,7 +90,7 @@ $routes->get('Login/logout', 'Login::logout');
 
 
 //Shapefile
-$routes->get('download-shp/(:num)', 'Shapefile::convertToSHP/$1');
+$routes->post('downloadShapefile/convertToSHP', 'downloadShapefile::convertToSHP');
 
 
 /*

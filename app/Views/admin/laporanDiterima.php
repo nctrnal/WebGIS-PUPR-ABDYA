@@ -7,13 +7,13 @@
         <div class="col">
             <h2 class="my-3">Daftar Laporan Diterima</h2>
             <a id="button" class="btn btn-primary mb-3" href="/Admin/lihatLaporan">
-                <i class="bi bi-journal-text"></i> Laporan Diterima
+                <i class="bi bi-journal-text"></i> Laporan Masuk
             </a><br>
             <?php if (!empty(session()->getFlashdata('success'))) : ?>
                 <div class="alert alert-success" role="alert">
                     <?php echo session()->getFlashdata('success'); ?>
                 </div>
-                <?php endif; ?>
+            <?php endif; ?>
             <input type="text" class="cd-search table-filter" data-table="table" placeholder="Cari" />
             <table class="table table-bordered table-striped">
                 <thead class="bg-secondary">
@@ -24,6 +24,7 @@
                         <th scope="col">Lokasi</th>
                         <th scope="col">Kerusakan</th>
                         <th scope="col">Deskripsi</th>
+                        <th scope="col">User</th>
                         <th scope="col">Bukti</th>
                         <th scope="col">Tanggal Laporan</th>
                         <th scope="col" style="width: 130px;">Status</th>
@@ -41,6 +42,7 @@
                             <td><?= $value->lokasi; ?> </td>
                             <td><?= $value->jenis_kerusakan; ?> </td>
                             <td><?= $value->deskripsi; ?> </td>
+                            <td><?= $value->user; ?> </td>
                             <td><a href="<?= base_url('uploads/bukti/' . $value->bukti); ?>"><img width="100px" src="<?= base_url('uploads/bukti/' . $value->bukti); ?>" alt="Bukti"></a></td>
                             <td><?= $value->created_at; ?> </td>
                             <td>

@@ -30,8 +30,12 @@
                             <label for="lokasi" class="form-label">Lokasi</label>
                         </div>
                         <div class="form-floating my-3">
-                            <input type="text" class="form-control" name="koordinat" id="lokasi" placeholder="koordinat" value="<?= $laporan->koordinat; ?>" readonly>
-                            <label for="koordinat" class="form-label">Koordinat</label>
+                            <input type="text" class="form-control" name="longitude" id="lokasi" placeholder="longitude" value="<?= $laporan->longitude; ?>" readonly>
+                            <label for="longitude" class="form-label">Longitude</label>
+                        </div>
+                        <div class="form-floating my-3">
+                            <input type="text" class="form-control" name="latitude" id="lokasi" placeholder="latitude" value="<?= $laporan->latitude; ?>" readonly>
+                            <label for="latitude" class="form-label">Latitude</label>
                         </div>
                         <br>
                         <i style="color: red;">*Silahkan tentukan jenis kerusakan berdasarkan bukti yang dikirimkan pelapor</i>

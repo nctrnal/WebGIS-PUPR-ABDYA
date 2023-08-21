@@ -9,7 +9,7 @@ use App\Models\LaporanModel;
 use App\Models\LaporanDiterimaModel;
 use App\Models\BeritaModel;
 use App\Models\KategoriModel;
-// use App\Models\LoginModel;
+use App\Models\LoginModel;
 
 
 class Admin extends BaseController
@@ -20,7 +20,7 @@ class Admin extends BaseController
     protected $LaporanDiterimaModel;
     protected $BeritaModel;
     protected $KategoriModel;
-    // protected $LoginModel;
+    protected $LoginModel;
 
     public function __construct()
     {
@@ -30,7 +30,7 @@ class Admin extends BaseController
         $this->LaporanDiterimaModel = new LaporanDiterimaModel();
         $this->BeritaModel = new BeritaModel();
         $this->KategoriModel = new KategoriModel();
-        // $this->LoginModel = new LoginModel();
+        $this->LoginModel = new LoginModel();
     }
 
     public function index()
@@ -114,7 +114,13 @@ class Admin extends BaseController
                     'required' => '{field} Tidak boleh kosong'
                 ]
             ],
-            'koordinat' => [
+            'longitude' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} Tidak boleh kosong'
+                ]
+            ],
+            'latitude' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Tidak boleh kosong'
@@ -144,7 +150,8 @@ class Admin extends BaseController
             'pelapor' => $this->request->getVar('pelapor'),
             'lokasi' => $this->request->getVar('lokasi'),
             'deskripsi' => $this->request->getVar('deskripsi'),
-            'koordinat' => $this->request->getVar('koordinat'),
+            'longitude' => $this->request->getVar('longitude'),
+            'latitude' => $this->request->getVar('latitude'),
             'bukti' => $fileName
         ]);
         //$dataLaporan merupakan nama file yang sudah diacak untuk menghidari
@@ -165,12 +172,14 @@ class Admin extends BaseController
     //sehingga detail yang ditampilkan akan berdasarkan id dari tabel pelaporan
     public function detailLaporan($id_pelaporan)
     {
+        $username = session()->get('username');
         $laporan = $this->LaporanModel;
         $kategori = $this->KategoriModel;
         $data = [
             'title' => 'Pelaporan',
             'laporan' => $laporan->find($id_pelaporan),
-            'kategori' => $kategori->findAll()
+            'kategori' => $kategori->findAll(),
+            'username' => $username,
         ];
         return view('admin/detailLaporan', $data);
         // return dd($data);
@@ -180,6 +189,9 @@ class Admin extends BaseController
     //sekaligus menghapus data pada tabel pelaporan
     public function terimaLaporan($id_pelaporan)
     {
+        //mengambil username admin yang melakukan perubahan data dari session
+        $username = session()->get('username');
+
         //code dibawah digunakan untuk melakukan validasi form yang sebelumnya
         //ditampilan saat membuka detail laporan
         if (!$this->validate(
@@ -214,7 +226,13 @@ class Admin extends BaseController
                         'required' => '{field} Tidak boleh kosong'
                     ]
                 ],
-                'koordinat' => [
+                'longitude' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} Tidak boleh kosong'
+                    ]
+                ],
+                'latitude' => [
                     'rules' => 'required',
                     'errors' => [
                         'required' => '{field} Tidak boleh kosong'
@@ -237,11 +255,13 @@ class Admin extends BaseController
         $laporan = $this->LaporanDiterimaModel;
         $laporan->insert([
             'nama_pelapor' => $this->request->getVar('nama_pelapor'),
+            'user' => $username,
             'pelapor' => $this->request->getVar('pelapor'),
             'lokasi' => $this->request->getVar('lokasi'),
             'jenis_kerusakan' => $this->request->getVar('jenis_kerusakan'),
             'deskripsi' => $this->request->getVar('deskripsi'),
-            'koordinat' => $this->request->getVar('koordinat'),
+            'longitude' => $this->request->getVar('longitude'),
+            'latitude' => $this->request->getVar('latitude'),
             'bukti' => $this->request->getVar('bukti')
         ]);
 
@@ -251,6 +271,7 @@ class Admin extends BaseController
         $this->LaporanModel->deleteLaporan($id_pelaporan);
 
         session()->setFlashdata('success', 'Laporan Diterima');
+        session()->setFlashdata('error', 'Laporan Tidak Terkirim');
         return redirect()->to(base_url('Admin/lihatLaporan'));
     }
 
@@ -286,17 +307,13 @@ class Admin extends BaseController
 
     public function tambahBerita()
     {
+        $user = session()->get('username');
+
         if (!$this->validate([
             'judul' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong'
-                ]
-            ],
-            'penulis' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Tidak boleh kosong'
                 ]
             ],
             'kategori' => [
@@ -333,7 +350,7 @@ class Admin extends BaseController
         $berita->insert([
             'foto' => $fileName,
             'judul' => $this->request->getVar('judul'),
-            'penulis' => $this->request->getVar('penulis'),
+            'penulis' => $user,
             'kategori' => $this->request->getVar('kategori'),
             'body' => $this->request->getVar('body')
         ]);
@@ -370,17 +387,13 @@ class Admin extends BaseController
 
     public function updateBerita($id_berita)
     {
+        $user = session()->get('username');
+
         if (!$this->validate([
             'judul' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong'
-                ]
-            ],
-            'penulis' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Tidak boleh kosong'
                 ]
             ],
             'kategori' => [
@@ -412,7 +425,7 @@ class Admin extends BaseController
         $fileName = $dataBerita->getRandomName();
         $berita->update($id_berita, [
             'judul' => $this->request->getVar('judul'),
-            'penulis' => $this->request->getVar('penulis'),
+            'penulis' => $user,
             'kategori' => $this->request->getVar('kategori'),
             'body' => $this->request->getVar('body'),
             'foto' => $fileName
@@ -429,7 +442,7 @@ class Admin extends BaseController
         return redirect()->to('/Admin');
     }
 
-    // Public function masuk()
+    // public function masuk()
     // {
     //     echo view('pages/v_login');
     // }
@@ -469,6 +482,6 @@ class Admin extends BaseController
     //         'username' => $this->request->getVar('username'),
     //         'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT)
     //     ]);
-    //     return redirect()->to('pages/v_login');
+    //     return redirect()->to('Pages/');
     // }
 }
